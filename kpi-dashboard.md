@@ -30,10 +30,11 @@ These six numbers tell you everything you need to know each week.
 
 ### 3. Conversion Rate
 
-**Definition:** Sales Won ÷ Total Active Leads (not Won or Lost).
-**Source:** Airtable — Won view ÷ active leads.
+**Definition:** Leads Won this week ÷ New Leads this week.
+**Source:** Weekly KPIs table — `Leads Won / New Leads` (auto-calculated by the Conversion Rate % formula field).
 **Target:** >20% at steady state.
-**Warning sign:** Dropping below 15% two weeks in a row.
+**Warning sign:** Dropping below 15% two weeks in a row. A result above 100% means backlog deals are closing faster than new leads are arriving — a good sign, not an error.
+**Why this definition:** The Weekly KPIs table is a manual per-week snapshot. "Total Active Leads" is a live pipeline count that changes daily and can't be reliably captured in a weekly row. For a business with 1–7 day sales cycles, wins-this-week ÷ new-leads-this-week is the most actionable and consistent signal available.
 
 ---
 
