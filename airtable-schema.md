@@ -1,102 +1,186 @@
-# Airtable Schema
+# Airtable Schema — Implementation Reference
 
-## Design Principle
-
-Four tables. No more. If you can't fit a use case into these four tables, the use case is probably premature.
+Base: **SuveSu Logs**
+Base ID: `apphVqbUQohAMIoWk`
 
 ---
 
 ## Table 1: Leads
 
-The core table. Every person who has shown any interest lives here.
+Table ID: `tblsBQkMOMyi5yc1n`
 
-| Field | Type | Notes |
-|-------|------|-------|
-| Name | Single line text | First + last or just first |
-| Phone | Phone number | Primary identifier; WhatsApp number |
-| Source | Single select | `WhatsApp`, `Contact Form`, `Suvesu Referral`, `Direct`, `Referral` |
-| Product Interest | Multiple select | `Su Arıtma`, `TDS Metre`, `Filtre`, `RO Sistemi`, `Diğer` |
-| Lead Stage | Single select | `New`, `Contacted`, `Qualified`, `Proposal Sent`, `Won`, `Lost` |
-| Score | Formula | Auto-calculated (see lead-scoring.md) |
-| Notes | Long text | Sales notes, objections, what they said |
-| Created | Date | Auto |
-| Last Contacted | Date | Updated manually each time |
-| Assigned To | Single line text | Salesperson name |
+| Field | Type | Field ID | Notes |
+|-------|------|----------|-------|
+| Name | singleLineText (primary) | `fldbeBIkPq3zfuIGY` | First name or full name |
+| Phone | phoneNumber | `fldyojqHa7d0Rhpxb` | WhatsApp number |
+| Source | singleSelect | `fldiI1Rq2A9Rb4F8A` | Where they came from |
+| Product Interest | multipleSelects | `fldBMhqojPA7llfju` | What they want to buy |
+| Lead Stage | singleSelect | `fldoObCW7edoT5Vgt` | Where they are in the pipeline |
+| Engagement | singleSelect | `fld7xUrEpcjUVVUHA` | Strongest buying signal shown |
+| Response Speed | singleSelect | `fld8t687Oy3rySSqm` | How fast they replied to you |
+| Notes | multilineText | `fld2cEV0lY1pwgpfp` | What they said, objections, context |
+| Created Date | date | `fldMZRN2WZZXjMdb4` | When they first contacted |
+| Last Contacted | date | `fld9kSuvRowlweNJg` | Update every time you reach out |
+| Assigned To | singleLineText | `fldLuGyiidhpmGeKu` | Salesperson name |
+| **Score** | formula | `fldxgvO88TPhaOmRt` | 0–10, auto-calculated |
+| **Score Label** | formula | `fldGfeRe6feECVzkq` | Hot / Warm / Cool / Cold |
 
-**Views to create:**
-- `Hot Leads` — Score ≥ 7, Stage = New or Contacted
-- `Follow-Up Today` — Last Contacted > 3 days ago, Stage ≠ Won/Lost
-- `This Week's Wins` — Stage = Won, Created this week
+### Source choices
+| Name | Meaning |
+|------|---------|
+| WhatsApp | Wrote to you directly on WhatsApp |
+| Contact Form | Submitted the Buzsu.com.tr form |
+| Suvesu Referral | Clicked through from a Suvesu.com article |
+| Direct | Called or walked in |
+| Referral | Referred by an existing customer |
+
+### Product Interest choices
+| Name |
+|------|
+| Su Aritma |
+| RO Sistemi |
+| Filtre |
+| TDS Metre |
+| Diger |
+
+### Lead Stage choices
+| Stage | Meaning |
+|-------|---------|
+| New | Just came in, not yet contacted |
+| Contacted | You sent first message |
+| Qualified | They confirmed interest and budget |
+| Proposal Sent | You sent a price or product link |
+| Won | Sale closed |
+| Lost | They said no or went silent after 3 follow-ups |
+
+### Engagement choices (pick the strongest signal they showed)
+| Choice | Score Points |
+|--------|-------------|
+| Fiyat Sordu | 2 pts — asked for a specific price |
+| Zaman Belirtti | 2 pts — mentioned a timeline ("bu ay", "hemen") |
+| Kurulum Sordu | 1 pt — asked about installation |
+| Genel Bilgi | 0 pts — just browsing |
+
+### Response Speed choices
+| Choice | Score Points |
+|--------|-------------|
+| 1 Saat Icinde | 2 pts — replied within 1 hour |
+| Ayni Gun | 1 pt — replied same day |
+| 24 Saat+ | 0 pts |
+| Cevap Yok | 0 pts — no reply at all |
+
+### Score Formula
+```
+IF({Source}="Suvesu Referral",3,IF({Source}="Referral",3,IF({Source}="Contact Form",2,IF({Source}="WhatsApp",2,0))))
++
+IF(OR(FIND("Su Aritma",{Product Interest})>0,FIND("RO Sistemi",{Product Interest})>0),3,
+  IF(FIND("Filtre",{Product Interest})>0,2,
+  IF(FIND("TDS Metre",{Product Interest})>0,1,0)))
++
+IF(OR({Engagement}="Fiyat Sordu",{Engagement}="Zaman Belirtti"),2,IF({Engagement}="Kurulum Sordu",1,0))
++
+IF({Response Speed}="1 Saat Icinde",2,IF({Response Speed}="Ayni Gun",1,0))
+```
+
+**Max score: 10. Score range → action:**
+- 8–10: Hot — call within 1 hour
+- 5–7: Warm — follow up same day
+- 2–4: Cool — add to weekly re-engagement batch
+- 0–1: Cold — archive after 2 attempts
+
+### Recommended Views to Create Manually
+
+**Hot Leads** — Filter: Score Label = "Hot", Lead Stage is not Won/Lost
+**Follow-Up Today** — Filter: Last Contacted < 3 days ago, Lead Stage ≠ Won/Lost
+**This Week's Wins** — Filter: Lead Stage = Won, Created Date = this week
 
 ---
 
 ## Table 2: Products
 
-Simple product reference. Not a full inventory system.
+Table ID: `tbldogYQwAQr24UWE`
 
-| Field | Type | Notes |
-|-------|------|-------|
-| Product Name | Single line text | |
-| Category | Single select | `Su Arıtma`, `TDS Metre`, `Filtre`, `Aksesuar` |
-| Price (TRY) | Currency | Current price |
-| Buzsu URL | URL | Direct link to product page |
-| Suvesu Article | URL | Related educational content on Suvesu |
-| Active | Checkbox | Uncheck to hide without deleting |
-| Notes | Long text | Common objections, selling points |
+| Field | Type | Field ID |
+|-------|------|----------|
+| Product Name | singleLineText (primary) | `fldXLw08VVVF8Aquz` |
+| Category | singleSelect | `fldLXUPLXEO2HHFK9` |
+| Price TRY | currency (₺) | `fldEds5Vy1frHlw3e` |
+| Buzsu URL | url | `fldOZXnwqNzgddMxj` |
+| Suvesu Article | url | `fldtwQlkCIWyljJdW` |
+| Active | checkbox | `fldOjYbJvwIvEMPNs` |
+| Notes | multilineText | `fldmnDYpfEoJX5P0Y` |
 
-**Why this exists:** Sales team can quickly grab product URLs during WhatsApp conversations without leaving Airtable.
+**Pre-seeded products:**
+- 5 Asamali RO Su Aritma Sistemi — ₺3,500
+- 7 Asamali RO Su Aritma Sistemi — ₺5,200
+- Dijital TDS Metre — ₺150
+- Yillik Filtre Seti (5'li) — ₺850
+- Musluk Ustu Su Aritma — ₺1,200
+
+Add Buzsu URLs and Suvesu Article links to each product manually. Takes 15 minutes.
 
 ---
 
 ## Table 3: Campaigns
 
-Track each outreach push — seasonal, re-engagement, new product announcements.
+Table ID: `tblNBJZIfdIbI4lNe`
 
-| Field | Type | Notes |
-|-------|------|-------|
-| Campaign Name | Single line text | e.g., "Yaz Kampanyası 2025" |
-| Type | Single select | `WhatsApp Broadcast`, `Seasonal`, `Re-engagement`, `New Product` |
-| Status | Single select | `Draft`, `Sent`, `Completed` |
-| Send Date | Date | |
-| Target Segment | Single line text | e.g., "Contacted + No Response 30d" |
-| Message Template | Long text | The actual message sent |
-| Leads Contacted | Number | How many people received it |
-| Replies Received | Number | How many replied |
-| Sales Generated | Number | Direct revenue from campaign |
-| Reply Rate | Formula | `{Replies Received} / {Leads Contacted}` |
+| Field | Type | Field ID |
+|-------|------|----------|
+| Campaign Name | singleLineText (primary) | `fldIUmc74pF3xvorQ` |
+| Type | singleSelect | `fldWqNxX6JfqU4vl4` |
+| Status | singleSelect | `fldrosqvCHvbmX8mo` |
+| Send Date | date | `fld1ppZ6dIY8v8dzO` |
+| Target Segment | singleLineText | `fldeJeeLoLqNdKBQs` |
+| Message Template | multilineText | `flduGLDjqFezvPrhx` |
+| Leads Contacted | number | `fldkbTw0j8zVameth` |
+| Replies Received | number | `fldXH4PZt3MGke2F5` |
+| Sales Generated | number | `fldTtpCZWfxPC8GTj` |
+| **Reply Rate %** | formula | `fldcHgDx3bctXwFu7` |
+
+### Reply Rate % Formula
+```
+IF({Leads Contacted}>0, ROUND(({Replies Received}/{Leads Contacted})*100, 1), 0)
+```
 
 ---
 
 ## Table 4: Weekly KPIs
 
-Manual weekly snapshot. Takes 10 minutes to fill out.
+Table ID: `tblaKmlTJvNeHJC6L`
 
-| Field | Type | Notes |
-|-------|------|-------|
-| Week Of | Date | Monday of the week |
-| New Leads | Number | From all sources |
-| Leads Contacted | Number | |
-| Conversion Rate | Percent | Won / Total Active |
-| Revenue (TRY) | Currency | Sales closed this week |
-| Top Lead Source | Single select | `WhatsApp`, `Suvesu`, `Direct`, `Form` |
-| Suvesu Sessions | Number | From Google Analytics |
-| Buzsu Sessions | Number | From Google Analytics |
-| Top Ranking Query | Single line text | Biggest keyword win this week |
-| Notes | Long text | What worked, what didn't |
+| Field | Type | Field ID |
+|-------|------|----------|
+| Week Of | date (primary, ISO) | `fldbDDipSAsbD1MUB` |
+| New Leads | number | `fld488TDb50pE2bzq` |
+| Leads Contacted | number | `fld8TINqdv0VcasjL` |
+| Leads Won | number | `fld4bh1FR2dZDuNqC` |
+| Revenue TRY | currency (₺) | `fldQiSlosRCsDtyXN` |
+| Top Lead Source | singleSelect | `fldGUpeLJjYNU6Tsr` |
+| Suvesu Sessions | number | `fldcrRHgjMtU5Pcc6` |
+| Buzsu Sessions | number | `fld2qMA9XZSkT3oBk` |
+| Top Ranking Query | singleLineText | `fldwy7H4OVe2GaDTc` |
+| Notes | multilineText | `fldK6fCts0o50ZYsR` |
+| **Conversion Rate %** | formula | `fldGEb6gM4DalHVtZ` |
+
+### Conversion Rate % Formula
+```
+IF({New Leads}>0, ROUND(({Leads Won}/{New Leads})*100, 1), 0)
+```
+
+**Weekly fill-in ritual (Monday, 10 minutes):**
+1. Create a new record for the current week
+2. Fill in numbers from WhatsApp Business + Google Analytics
+3. Note what worked in the Notes field
+4. Review Hot Leads view and assign follow-ups
 
 ---
 
-## Linking Strategy
+## What Was Deliberately Left Out
 
-- Leads ↔ Products: Use `Product Interest` field (multi-select) — no linked records needed at this volume
-- Campaigns → Leads: Track in Campaign `Target Segment` as text — no complex automation yet
-- KPIs: Manually filled; no automation required
-
-## When to Add Tables
-
-Only add a 5th table if:
-- You have >500 leads per month and need advanced segmentation
-- You hire a second salesperson and need territory management
-- You add a second product category that requires separate tracking
-
-**Resist the urge to add tables sooner.**
+| Skipped | Why |
+|---------|-----|
+| Linked records between tables | Unnecessary complexity at <500 leads/month |
+| Email field on Leads | Turkish market uses WhatsApp; email is secondary |
+| Automated Zapier/Make flows | Manual entry is faster to start; add automation when volume demands it |
+| 5th table | No use case yet |
