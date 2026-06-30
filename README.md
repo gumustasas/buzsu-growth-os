@@ -48,6 +48,24 @@ Kullanıcı Talebi
 
 ---
 
+## Platform Katmanı (Sprint-2 → Sprint-3)
+
+Sprint-2 ile `buzsu-growth-os` dokümantasyon deposu olmaktan çıkıp gerçek bir platform altyapısına dönüştü.  
+Sprint-3 ile mock UI'nin altına gerçek bir TypeScript data layer kuruldu (`lib/`, `types/`, `config/`, `knowledge-graph/api/`).
+
+| Katman | Klasör | Durum |
+|--------|--------|-------|
+| Dashboard UI | `dashboard/` | Next.js 14 iskelet, mock data |
+| Data Layer | `lib/` | 5 connector client (Mock/Live), dashboard-service |
+| Domain Tipleri | `types/` | 8 tip dosyası |
+| Feature Flags | `config/` | `USE_MOCK_DATA` + connector bayrakları |
+| Connector Mimarisi | `connectors/` | Airtable ✅, Serper/GSC/GA4/MC planlandı |
+| Knowledge Graph | `knowledge-graph/` | 10 entity seed + okuma API'si (`api/`) |
+
+**Veri modu:** `USE_MOCK_DATA=true` (varsayılan) tüm connector'ları mock'a sabitler. Live mod stub (Sprint-4'te uygulanacak). Şablon: [`.env.example`](.env.example).
+
+---
+
 ## Dizin Yapısı
 
 ```
@@ -56,64 +74,65 @@ buzsu-growth-os/
 ├── AGENTS.md              ← Agent sistemi referansı
 ├── README.md              ← Bu dosya
 ├── ROADMAP.md             ← Geliştirme yol haritası
-├── MIGRATION_REPORT.md    ← AtlasOS → Buzsu Growth OS geçiş raporu
-├── airtable-schema.md     ← CRM şema referansı
-├── lead-entry-audit.md    ← Lead entry point denetim raporu
+│
+├── dashboard/             ← Next.js 14 Growth OS panosu (Sprint-2)
+│   ├── app/               ← App Router (page.tsx, layout.tsx)
+│   ├── components/        ← Sidebar, MetricCard, ModuleCard
+│   └── widgets/           ← SEO, GEO, Snippet, Schema, Tasks, EntityGraph
+│
+├── lib/                   ← TypeScript data layer (Sprint-3)
+│   ├── airtable/          ← client.ts + types.ts + README
+│   ├── serper/            ← client.ts + types.ts + README
+│   ├── gsc/               ← client.ts + types.ts + README
+│   ├── ga4/               ← client.ts + types.ts + README
+│   ├── merchant/          ← client.ts + types.ts + README
+│   └── dashboard/         ← dashboard-service.ts (orkestrasyon)
+│
+├── types/                 ← Domain tipleri (Sprint-3)
+│   ├── seo.ts  geo.ts  schema.ts  entity.ts
+│   └── dashboard.ts  product.ts  task.ts  report.ts
+│
+├── config/                ← feature-flags.ts (USE_MOCK_DATA)
+│
+├── .env.example           ← Environment variable şablonu (Sprint-3)
+│
+├── connectors/            ← Dış veri kaynağı mimarisi (Sprint-2)
+│   ├── airtable/          ← CRM connector (okuma aktif)
+│   ├── serper/            ← SERP + AI Overview connector (planlandı)
+│   ├── gsc/               ← Google Search Console (planlandı)
+│   ├── ga4/               ← Google Analytics 4 (planlandı)
+│   └── merchant-center/   ← Google Merchant Center (planlandı)
+│
+├── knowledge-graph/       ← Entity-bazlı bilgi yapısı (Sprint-2)
+│   ├── entities/          ← Organizasyon entity'leri
+│   ├── brands/            ← Marka entity'leri
+│   ├── products/          ← Ürün entity'leri
+│   ├── components/        ← Bileşen entity'leri
+│   ├── technologies/      ← Teknoloji entity'leri
+│   ├── certifications/    ← Belge entity'leri
+│   ├── minerals/          ← Mineral entity'leri
+│   ├── contaminants/      ← Kirletici entity'leri
+│   ├── faq/               ← SSS entity'leri
+│   ├── glossary/          ← Sözlük
+│   ├── locations/         ← Lokasyon entity'leri
+│   └── api/               ← Entity okuma API'si: index, search, relations (Sprint-3)
 │
 ├── agents/                ← Agent tanım dosyaları (10 agent)
-│   ├── seo-agent.md
-│   ├── geo-agent.md
-│   ├── snippet-agent.md
-│   ├── cro-agent.md
-│   ├── schema-agent.md
-│   ├── eeat-agent.md
-│   ├── content-agent.md
-│   ├── competitor-agent.md
-│   ├── commerce-agent.md
-│   └── automation-agent.md
 │
 ├── docs/                  ← Sistem belgeleri
-│   ├── human-approval.md  ← Onay sistemi ve değişiklik sınıflandırması
-│   ├── operating-model.md ← İşletme modeli ve operasyon ritmi
-│   └── ai-commerce-layer.md ← AI Commerce katmanı protokolü
 │
 ├── tasks/                 ← Aktif ve tamamlanan görevler
 │   ├── seo/
-│   ├── geo/
-│   ├── cro/
 │   ├── schema/
-│   ├── content/
-│   ├── commerce/
-│   └── automation/
+│   └── platform/          ← Sprint görev dosyaları
 │
-├── drafts/                ← İnsan onayı bekleyen çıktılar
-│   ├── content/           ← Blog taslakları, SEO brief'leri
-│   ├── code/              ← Branch + PR taslakları
-│   ├── schema/            ← JSON-LD markup dosyaları
-│   └── workflows/         ← n8n, Airtable otomasyon taslakları
-│
-├── outputs/               ← Onaylanmış, kullanıma hazır çıktılar
-│   ├── reports/           ← SEO, GEO, performans raporları
-│   ├── audits/            ← E-E-A-T, rakip, lead denetimleri
-│   ├── briefs/            ← Yayına hazır içerik brief'leri
-│   └── recommendations/   ← CRO önerileri
-│
-├── workflows/             ← Onaylanmış otomasyon dosyaları
-│   ├── n8n/
-│   ├── serper/
-│   └── airtable/
+├── outputs/               ← Onaylanmış çıktılar
+│   └── reports/
 │
 ├── patches/               ← Diğer repolara uygulanacak hazır yamalar
-│   ├── buzsu-site/        ← Buzsu.com.tr için hazır PR taslakları (aktif)
-│   │   ├── product-schema-v2.md    ← Product + BreadcrumbList schema
-│   │   ├── internal-linking.md     ← İç bağlantı haritası
-│   │   ├── cro-product-page.md     ← CRO güven blokları + CTA hiyerarşisi
-│   │   ├── geo-ai-overview.md      ← GEO içerik + FAQ schema
-│   │   └── whatsapp-sales.md       ← WhatsApp pre-fill satış akışı
-│   └── (diğer repolar için)
+│   └── buzsu-site/
 │
 └── archive/               ← Kullanımdan kalkmış dosyalar
-    └── legacy/patches/suvesu-site/ ← Suvesu-site patch'leri (referans)
 ```
 
 ---

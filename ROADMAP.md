@@ -1,7 +1,7 @@
 # ROADMAP — Buzsu Growth OS
 
 **Son güncelleme:** 2026-06-30  
-**Versiyon:** 1.0
+**Versiyon:** 3.0 (Sprint-3)
 
 ---
 
@@ -41,6 +41,45 @@
 ---
 
 ## Aktif Fazlar
+
+### Faz 5 — Platform Altyapısı — Dashboard + Connectors + Knowledge Graph 🔄
+**Sprint:** Sprint-2 (iskelet) → Sprint-3 (data layer)  
+**Model:** Mock data ile iskelet kurulum → TypeScript data layer → Sprint-4'te live connector implementasyonu.
+
+#### 5.0 — Live Data Foundation (Sprint-3 ✅)
+- [x] `lib/` data layer: 5 connector client (Airtable, Serper, GSC, GA4, Merchant)
+- [x] Her connector: `client.ts` (interface + Mock/Live fabrika) + `types.ts` + README
+- [x] `lib/dashboard/dashboard-service.ts` — connector orkestrasyonu (`getSnapshot`)
+- [x] `types/` — 8 domain tip dosyası
+- [x] `config/feature-flags.ts` — `USE_MOCK_DATA` + connector aktivasyon bayrakları
+- [x] `knowledge-graph/api/` — entity okuma API'si (index, search, relations)
+- [x] `.env.example` — environment variable şablonu (anahtar yok)
+- [x] Live client'lar stub (`NotImplemented`) — gerçek API çağrısı Sprint-4
+- [ ] **Sprint-4:** Live client implementasyonları (gerçek fetch + auth)
+- [ ] **Sprint-4:** Dashboard UI'ı dashboard-service'e bağla (mock → snapshot)
+
+#### 5.1 — Dashboard (Sprint-2 ✅)
+- [x] Next.js 14 App Router iskelet (`dashboard/`)
+- [x] Sidebar, MetricCard, ModuleCard bileşenleri
+- [x] 6 widget: SeoOverview, GeoOverview, SnippetOverview, SchemaOverview, TasksOverview, EntityGraphOverview
+- [ ] **Sprint-3:** Airtable live connector → ürün ve KPI widget'ları canlı veri
+
+#### 5.2 — Connectors (Sprint-2 ✅)
+- [x] Connector mimarisi ve README'ler (5 connector)
+- [x] Airtable connector — okuma aktif (TASK'lardan)
+- [ ] **Sprint-3:** Serper connector — SERP snapshot otomasyonu
+- [ ] **Sprint-3:** GSC connector — n8n → Airtable KPI pipeline
+- [ ] **Sprint-4:** GA4 + Merchant Center connector
+
+#### 5.3 — Knowledge Graph (Sprint-2 ✅)
+- [x] `knowledge-graph/` yapısı (11 kategori klasörü)
+- [x] KG README — entity mimarisi, SEO/GEO/Schema/AI Commerce/WebMCP ilişkileri
+- [x] 10 entity seed dosyası
+- [ ] **Sprint-3:** 40 entity (teknolojiler, rakip markalar, sertifikalar)
+- [ ] **Sprint-4:** 100 entity
+- [ ] **Sprint-5:** 150–200 entity (hedef)
+
+---
 
 ### Faz 4 — Buzsu SEO/GEO/CRO İlk Canlı Uygulama 🔄
 **Ana hedef URL:** `https://www.buzsu.com.tr/su-aritma-cihazlari/`  
@@ -113,7 +152,14 @@
 
 ---
 
-### Faz 5 — Buzsu.com.tr Site Geneli SEO Temeli 📋
+### Faz 4 Schema — TASK-006 Product Schema Entegrasyonu ⏸️ Blocked
+**Blocker:** Airtable'da SKU, Image URL ve Schema Description alanları henüz doldurulmadı.  
+**Sonraki adım:** Bu alanlar dolduğunda `feat/product-schema-ci4` branch açılır (TASK-005 planı hazır).  
+**Bağımlılık:** TASK-004 (Airtable alan tanımı) → insan onayı bekliyor.
+
+---
+
+### Faz 6 — Buzsu.com.tr Site Geneli SEO Temeli 📋
 **Öneri:** Faz 4 tamamlandıktan sonra başla. Odak: Buzsu.com.tr ana domenin tüm kritik sayfaları.
 
 - [ ] Hedef anahtar kelime listesi — Buzsu ürün kategorilerine göre (seo-agent)
