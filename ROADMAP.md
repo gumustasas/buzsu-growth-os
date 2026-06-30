@@ -64,6 +64,7 @@
 - [ ] Mevcut Product/FAQ/Breadcrumb schema durumu (schema-agent)
   - Var mı? Eksik alan var mı? Hata var mı?
 - [ ] Eksik schema için JSON-LD taslakları (schema-agent)
+- [ ] Patch referansı: `patches/buzsu-site/product-schema-v2.md`
 - [ ] Çıktı: `drafts/schema/product-buzsu-suaritma-<tarih>.json`
 - [ ] PR taslağı: `drafts/code/schema-buzsu-suaritma-pr.md`
 
@@ -71,12 +72,14 @@
 - [ ] Mevcut iç bağlantı profili (seo-agent)
   - Hangi sayfalar bu URL'ye bağlıyor? Hangileri bağlamalı?
 - [ ] Suvesu.com → Buzsu.com.tr link fırsatları
+- [ ] Patch referansı: `patches/buzsu-site/internal-linking.md`
 - [ ] Çıktı: `drafts/content/internal-link-map-<tarih>.md`
 
 #### 4.5 — Snippet Fırsatları
 - [ ] "Su arıtma cihazları" ve alt sorguları için snippet analizi (snippet-agent)
   - PAA soruları, top snippet türü (liste/tablo/paragraf)
 - [ ] Snippet optimizasyon metin önerileri
+- [ ] Patch referansı: `patches/buzsu-site/geo-ai-overview.md` (GEO + FAQ schema)
 - [ ] Çıktı: `drafts/content/snippet-buzsu-suaritma-<tarih>.md`
 
 #### 4.6 — CRO Güven Blokları
@@ -85,6 +88,7 @@
   - Garanti, servis, kurulum bilgisi varlığı
   - Fiyat görünürlüğü ve CTA hiyerarşisi
 - [ ] Güven bloğu metin önerileri
+- [ ] Patch referansı: `patches/buzsu-site/cro-product-page.md`
 - [ ] Çıktı: `drafts/content/cro-trust-buzsu-<tarih>.md`
 
 #### 4.7 — CTA ve WhatsApp Satış Akışı
@@ -92,6 +96,7 @@
 - [ ] Ürün sayfasına özel WhatsApp pre-fill URL önerileri
   - Her ürün kategorisi için ayrı mesaj şablonu
 - [ ] Sepet → WhatsApp handoff akışı taslağı
+- [ ] Patch referansı: `patches/buzsu-site/whatsapp-sales.md`
 - [ ] Çıktı: `drafts/workflows/wa-handoff-buzsu-suaritma-<tarih>.md`
 
 #### 4.8 — Taslak Öneri Dosyası ve Manuel Onay
@@ -211,10 +216,23 @@
 
 ---
 
+## Patch Dizini
+
+| Patch Dosyası | Kapsam | Durum |
+|--------------|--------|-------|
+| `patches/buzsu-site/product-schema-v2.md` | Product + BreadcrumbList schema | Uygulanmayı bekliyor |
+| `patches/buzsu-site/internal-linking.md` | İç bağlantı haritası | Uygulanmayı bekliyor |
+| `patches/buzsu-site/cro-product-page.md` | CRO güven blokları + CTA | Uygulanmayı bekliyor |
+| `patches/buzsu-site/geo-ai-overview.md` | GEO içerik + FAQ schema | Uygulanmayı bekliyor |
+| `patches/buzsu-site/whatsapp-sales.md` | WhatsApp pre-fill satış akışı | Uygulanmayı bekliyor |
+| `archive/legacy/patches/suvesu-site/ai-agent-field-mapping.md` | Suvesu logLead() fix | Arşiv — referans |
+
+---
+
 ## Notlar
 
 - **Ana odak Buzsu.com.tr'dir.** Suvesu.com destekleyici içerik otoritesi olarak Buzsu'ya trafik gönderir.
 - Her faz tamamlandığında bu dosya güncellenir.
-- `patches/` altındaki yamalar `suvesu-site` reposuna insan tarafından uygulanır.
+- `patches/buzsu-site/` altındaki yamalar insan tarafından Buzsu.com.tr'ye uygulanır.
 - Buzsu.com.tr production platform erişimi (hosting panel) gerektiren işlemler Faz 4.9'dan önce doğrulanmalıdır.
 - **Tüm canlı değişiklikler:** Önce `/drafts/`, insan onayı, ardından branch + PR. Otomatik yayın yok.
