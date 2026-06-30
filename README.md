@@ -1,8 +1,12 @@
 # Buzsu Growth OS
 
-Buzsu.com.tr ve Suvesu.com için AI destekli büyüme sistemi. SEO, GEO, CRO, Schema, E-E-A-T, İçerik, Rakip Analizi, AI Commerce ve Otomasyon iş akışlarını tek çatı altında yönetir.
+**Ana hedef:** Buzsu.com.tr — su arıtma e-ticaret ve lead üretim platformu.  
+**Destekleyici içerik otoritesi:** Suvesu.com — organik trafik ve AI Overview alıntısı için bilgi sitesi; Buzsu'ya nitelikli ziyaretçi gönderir.
 
-**Model:** Yarı otonom — ajanlar analiz ve taslak üretir, insanlar onaylar ve uygular.
+SEO, GEO, CRO, Schema, E-E-A-T, İçerik, Rakip Analizi, AI Commerce ve Otomasyon iş akışlarını tek çatı altında yönetir.
+
+**Model:** Yarı otonom — ajanlar analiz ve taslak üretir, insanlar onaylar ve uygular.  
+**Kural:** Canlı siteye otomatik yayın yok. Her çıktı önce `/drafts/`, onay sonrası PR.
 
 ---
 
@@ -111,8 +115,8 @@ buzsu-growth-os/
 |--------|-----|--------|
 | Airtable (apphVqbUQohAMIoWk) | CRM — Leads, Products, Campaigns, KPI | Token: AIRTABLE_TOKEN |
 | Serper | SERP + AI Overview analizi | Agent araç |
-| suvesu-site (Vercel) | Suvesu.com production | GitHub: gumustasas/suvesu-site |
-| buzsu (Vercel) | Buzsu.com.tr prototype | GitHub: gumustasas/buzsu |
+| buzsu.com.tr (production) | **Ana platform** — lead + satış | GitHub: gumustasas/buzsu (prototype) |
+| suvesu-site (Vercel) | Destekleyici içerik otoritesi — Buzsu'ya trafik gönderir | GitHub: gumustasas/suvesu-site |
 | n8n | Otomasyon iş akışları | Taslak — insan yükler |
 | WhatsApp Business | Lead handoff kanalı | wa.me/905527896905 |
 

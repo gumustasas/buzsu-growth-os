@@ -42,46 +42,99 @@
 
 ## Aktif Fazlar
 
-### Faz 4 — P1 Uygulamaları (Suvesu-site) 🔄
-**Tahmini süre:** 2–3 saat (insan uygular)
+### Faz 4 — Buzsu SEO/GEO/CRO İlk Canlı Uygulama 🔄
+**Ana hedef URL:** `https://www.buzsu.com.tr/su-aritma-cihazlari/`  
+**Model:** Draft → İnsan Onayı → PR. Canlı siteye otomatik yayın yok.
 
-- [ ] `public_html/api/chat.js` — logLead() field mapping fix
-  - Patch: `patches/suvesu-site/ai-agent-field-mapping.md`
-  - Test: `patches/suvesu-site/chat.test.js`
-  - Branch: `fix/ai-agent-airtable-field-mapping`
-- [ ] `public_html/contact.php` — Airtable API entegrasyonu
-  - Patch: `lead-entry-audit.md` P1 bölümü
-  - Branch: `fix/contact-form-airtable`
-- [ ] Deployment sonrası Airtable'da test lead kontrolü
+#### 4.1 — Sayfa Crawl ve Durum Analizi
+- [ ] `https://www.buzsu.com.tr/su-aritma-cihazlari/` sayfa içeriği analizi (WebFetch)
+  - Mevcut başlık, meta description, H yapısı
+  - Sayfa hızı ve Core Web Vitals gözlemi
+  - Canonical ve hreflang durumu
+- [ ] Çıktı: `tasks/seo/buzsu-suaritma-crawl-<tarih>.md`
 
-**Başarı kriteri:** Suvesu AI agent'tan gelen lead Airtable'da Phone, Source, Product Interest, Lead Stage ve Engagement alanlarıyla görünüyor.
+#### 4.2 — SERP ve Rakip Analizi
+- [ ] Hedef anahtar kelime SERP durumu (seo-agent + competitor-agent)
+  - "su arıtma cihazları", "su arıtma cihazı fiyat", "ev su arıtma"
+  - Buzsu'nun mevcut sıralaması, rakip top-5 domain
+- [ ] Rakip sayfa yapısı karşılaştırması (içerik uzunluğu, CTA modeli)
+- [ ] Çıktı: `drafts/content/seo-brief-buzsu-suaritma-<tarih>.md`
+
+#### 4.3 — Schema Kontrolü
+- [ ] Mevcut Product/FAQ/Breadcrumb schema durumu (schema-agent)
+  - Var mı? Eksik alan var mı? Hata var mı?
+- [ ] Eksik schema için JSON-LD taslakları (schema-agent)
+- [ ] Çıktı: `drafts/schema/product-buzsu-suaritma-<tarih>.json`
+- [ ] PR taslağı: `drafts/code/schema-buzsu-suaritma-pr.md`
+
+#### 4.4 — İç Bağlantı Haritası
+- [ ] Mevcut iç bağlantı profili (seo-agent)
+  - Hangi sayfalar bu URL'ye bağlıyor? Hangileri bağlamalı?
+- [ ] Suvesu.com → Buzsu.com.tr link fırsatları
+- [ ] Çıktı: `drafts/content/internal-link-map-<tarih>.md`
+
+#### 4.5 — Snippet Fırsatları
+- [ ] "Su arıtma cihazları" ve alt sorguları için snippet analizi (snippet-agent)
+  - PAA soruları, top snippet türü (liste/tablo/paragraf)
+- [ ] Snippet optimizasyon metin önerileri
+- [ ] Çıktı: `drafts/content/snippet-buzsu-suaritma-<tarih>.md`
+
+#### 4.6 — CRO Güven Blokları
+- [ ] Mevcut sayfada güven sinyali analizi (cro-agent)
+  - Sosyal kanıt (yorum sayısı, referans görseli)
+  - Garanti, servis, kurulum bilgisi varlığı
+  - Fiyat görünürlüğü ve CTA hiyerarşisi
+- [ ] Güven bloğu metin önerileri
+- [ ] Çıktı: `drafts/content/cro-trust-buzsu-<tarih>.md`
+
+#### 4.7 — CTA ve WhatsApp Satış Akışı
+- [ ] Mevcut CTA ve WhatsApp buton analizi (cro-agent + commerce-agent)
+- [ ] Ürün sayfasına özel WhatsApp pre-fill URL önerileri
+  - Her ürün kategorisi için ayrı mesaj şablonu
+- [ ] Sepet → WhatsApp handoff akışı taslağı
+- [ ] Çıktı: `drafts/workflows/wa-handoff-buzsu-suaritma-<tarih>.md`
+
+#### 4.8 — Taslak Öneri Dosyası ve Manuel Onay
+- [ ] Tüm 4.1–4.7 bulgularının tek özet dosyasına derlenmesi
+- [ ] Çıktı: `drafts/content/buzsu-suaritma-full-brief-<tarih>.md`
+- [ ] **İNSAN ONAYI**: Özet dosyası incelendikten sonra
+
+#### 4.9 — PR (Onay Sonrası, İnsan Uygular)
+- [ ] Schema PR: `fix/schema-buzsu-su-aritma-cihazlari`
+- [ ] CTA/WhatsApp PR: `fix/cta-wa-buzsu-su-aritma`
+- [ ] Her PR için: branch oluştur → değişikliği uygula → test et → PR aç
+
+**Başarı kriteri:** `buzsu.com.tr/su-aritma-cihazlari/` sayfasında Product schema aktif, WhatsApp CTA ürüne özel, en az 1 PAA sorusuna yanıt veren içerik bölümü mevcut.
 
 ---
 
-### Faz 5 — SEO Temeli 📋
-**Öneri:** Faz 4 tamamlandıktan sonra başla
+### Faz 5 — Buzsu.com.tr Site Geneli SEO Temeli 📋
+**Öneri:** Faz 4 tamamlandıktan sonra başla. Odak: Buzsu.com.tr ana domenin tüm kritik sayfaları.
 
-- [ ] Hedef anahtar kelime listesi (seo-agent)
-  - "su arıtma", "RO sistemi", "TDS değeri", "su arıtma cihazı fiyat"
-  - Hacim, rekabet, intent analizi
-- [ ] Suvesu.com mevcut SERP durum tespiti
-- [ ] İç bağlantı haritası çıkarma
-- [ ] Teknik SEO denetimi (canonical, meta, hız)
-- [ ] İlk 3 içerik güncelleme önceliği
+- [ ] Hedef anahtar kelime listesi — Buzsu ürün kategorilerine göre (seo-agent)
+  - "su arıtma cihazı", "RO sistemi", "su arıtma cihazı fiyat", "ev su arıtma sistemi"
+  - Her anahtar kelime için: hacim, rekabet, intent, mevcut sıralama
+- [ ] Buzsu.com.tr kritik sayfaların teknik SEO taraması
+  - canonical, meta, H yapısı, hız, mobil uyumluluk
+- [ ] İç bağlantı haritası — tüm Buzsu sayfaları arası
+- [ ] Suvesu.com → Buzsu.com.tr bağlantı fırsatları (içerik-ürün köprüsü)
+- [ ] İlk 3 içerik güncelleme ve 3 yeni içerik önceliği
 
-**Çıktı:** `drafts/content/seo-brief-Q3-2026.md`
+**Çıktı:** `drafts/content/seo-brief-buzsu-site-Q3-2026.md`
 
 ---
 
 ### Faz 6 — GEO ve Snippet Optimizasyonu 📋
-**Öneri:** Faz 5 paralel veya sonrası
+**Öneri:** Faz 5 paralel veya sonrası. Odak: Buzsu.com.tr ve Suvesu.com AI Overview + Featured Snippet alıntısı.
 
-- [ ] "Su arıtma" AI Overview alıntı durumu analizi (geo-agent)
-- [ ] PAA fırsatları listesi — top 20 soru (snippet-agent)
-- [ ] İlk 3 snippet hedefi için içerik yeniden yapılandırma
-- [ ] GEO uyumlu makale şablonu (content-agent)
+- [ ] "Su arıtma cihazları" ve "RO sistemi" AI Overview alıntı durumu (geo-agent)
+  - Buzsu markalı sorgular AI sonuçlarında görünüyor mu?
+- [ ] PAA fırsatları listesi — top 20 soru, Buzsu ürünleriyle ilişkili (snippet-agent)
+- [ ] İlk 3 snippet hedefi için Buzsu sayfası içerik yeniden yapılandırma
+- [ ] Suvesu.com → GEO: AI Overview alıntısı kazanacak bilgi makalesi önerileri
+- [ ] GEO uyumlu Buzsu ürün açıklaması şablonu (content-agent)
 
-**Çıktı:** `drafts/content/geo-su-aritma-2026.md`
+**Çıktı:** `drafts/content/geo-buzsu-su-aritma-2026.md`
 
 ---
 
@@ -109,9 +162,11 @@
 
 ### Faz 9 — Rakip Analizi ve İçerik Boşlukları 🗓️
 - [ ] "Su arıtma" nişinde top-10 rakip SERP analizi (competitor-agent)
-- [ ] İçerik boşluğu haritası — rakipler var, Suvesu yok
-- [ ] İlk 5 içerik boşluğu için brief (content-agent)
+  - Buzsu.com.tr'nin SERP'te kaybettiği konumlar
+- [ ] İçerik boşluğu haritası — rakipler var, Buzsu/Suvesu yok
+- [ ] İlk 5 içerik boşluğu için Buzsu odaklı brief (content-agent)
 - [ ] Rakip schema ve snippet kullanımı karşılaştırması
+- [ ] Rakiplerden Buzsu'ya conversion path analizi
 
 ---
 
@@ -144,18 +199,22 @@
 
 ## Metrikler
 
-| Metrik | Mevcut | Hedef (Q3 2026) |
-|--------|--------|----------------|
-| AI agent lead'lerin Airtable kayıt kalitesi | Name+Notes | Tüm alanlar |
-| Hot Lead oranı (8+ puan) | ~0% | >15% |
-| Featured snippet sayısı | Bilinmiyor | 3+ |
-| AI Overview alıntı sayısı | Bilinmiyor | 2+ |
-| Suvesu organik tıklama (MoM büyüme) | Baz alınacak | +20% |
+| Metrik | Platform | Mevcut | Hedef (Q3 2026) |
+|--------|----------|--------|----------------|
+| AI agent lead'lerin Airtable kayıt kalitesi | Suvesu | Name+Notes | Tüm alanlar |
+| Hot Lead oranı (8+ puan) | Airtable | ~0% | >15% |
+| Buzsu.com.tr organik tıklama (MoM büyüme) | **Buzsu** | Baz alınacak | +30% |
+| Featured snippet sayısı | **Buzsu** | Bilinmiyor | 3+ |
+| AI Overview alıntı sayısı | **Buzsu** + Suvesu | Bilinmiyor | 2+ |
+| Product schema kapsamı | **Buzsu** | Bilinmiyor | 5 ürün sayfası |
+| WhatsApp conversion oranı (lead → satış) | **Buzsu** | Bilinmiyor | Baz alınacak |
 
 ---
 
 ## Notlar
 
+- **Ana odak Buzsu.com.tr'dir.** Suvesu.com destekleyici içerik otoritesi olarak Buzsu'ya trafik gönderir.
 - Her faz tamamlandığında bu dosya güncellenir.
 - `patches/` altındaki yamalar `suvesu-site` reposuna insan tarafından uygulanır.
-- Buzsu.com.tr production erişimi olmadan Faz 12 başlatılamaz.
+- Buzsu.com.tr production platform erişimi (hosting panel) gerektiren işlemler Faz 4.9'dan önce doğrulanmalıdır.
+- **Tüm canlı değişiklikler:** Önce `/drafts/`, insan onayı, ardından branch + PR. Otomatik yayın yok.

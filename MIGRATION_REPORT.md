@@ -126,16 +126,25 @@ AtlasOS'un genel amaçlı AI ajan mimarisi, Buzsu.com.tr ve Suvesu.com'un özel 
 
 ## Bir Sonraki Adım
 
-**Acil (Faz 4):**
+**Faz 4 — Buzsu SEO/GEO/CRO İlk Canlı Uygulama**
+
+Ana hedef URL: `https://www.buzsu.com.tr/su-aritma-cihazlari/`
+
+Çalışma sırası (her adım draft → onay → PR):
+
+1. **Sayfa analizi:** `tasks/seo/` altına görev dosyası oluştur → seo-agent çalıştır → `drafts/content/seo-brief-buzsu-suaritma-<tarih>.md`
+2. **Schema:** schema-agent → `drafts/schema/product-buzsu-suaritma-<tarih>.json` + `drafts/code/schema-buzsu-suaritma-pr.md`
+3. **Snippet:** snippet-agent → `drafts/content/snippet-buzsu-suaritma-<tarih>.md`
+4. **CRO/WhatsApp:** cro-agent + commerce-agent → `drafts/content/cro-trust-buzsu-<tarih>.md` + `drafts/workflows/wa-handoff-buzsu-suaritma-<tarih>.md`
+5. **Onay:** Tüm taslakları incele → onayla
+6. **PR:** Branch aç → değişikliği uygula → PR aç
+
+**Suvesu P1 patch (paralel, düşük öncelik):**
 ```bash
-# suvesu-site reposunda:
+# suvesu-site reposunda (Faz 4 ile paralel yapılabilir):
 git checkout -b fix/ai-agent-airtable-field-mapping
 # patches/suvesu-site/ai-agent-field-mapping.md içindeki değişiklikleri uygula
 node public_html/api/chat.test.js  # 31 test geçmeli
 git push -u origin fix/ai-agent-airtable-field-mapping
-# PR aç: fix/ai-agent-airtable-field-mapping → main
 ```
-
-**Ardından (Faz 5):**
-- `tasks/seo/` altında anahtar kelime analizi görevi başlat
-- seo-agent çalıştır
+Bu fix Suvesu AI agent lead'lerini Airtable'da düzgün kaydeder; Buzsu'ya gelecek Suvesu referral lead'lerinin kalitesini artırır.
