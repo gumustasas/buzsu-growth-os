@@ -61,6 +61,7 @@ Sprint-3 ile mock UI'nin altına gerçek bir TypeScript data layer kuruldu (`lib
 | Feature Flags | `config/` | `USE_MOCK_DATA` + connector bayrakları |
 | Connector Mimarisi | `connectors/` | Airtable ✅, Serper/GSC/GA4/MC planlandı |
 | Knowledge Graph | `knowledge-graph/` | 10 entity seed + okuma API'si (`api/`) |
+| Automation Layer | `automation/n8n/` | 10 workflow tanımı (architecture-only) |
 
 **Veri modu:** `USE_MOCK_DATA=true` (varsayılan) tüm connector'ları mock'a sabitler. Live mod stub (Sprint-4'te uygulanacak). Şablon: [`.env.example`](.env.example).
 
@@ -93,6 +94,11 @@ buzsu-growth-os/
 │   └── dashboard.ts  product.ts  task.ts  report.ts
 │
 ├── config/                ← feature-flags.ts (USE_MOCK_DATA)
+│
+├── automation/            ← Otomasyon katmanı (Sprint-5)
+│   └── n8n/
+│       ├── README.md      ← n8n mimari + retry/hata desenleri
+│       └── workflows/     ← 10 workflow tanımı (architecture-only)
 │
 ├── .env.example           ← Environment variable şablonu (Sprint-3)
 │

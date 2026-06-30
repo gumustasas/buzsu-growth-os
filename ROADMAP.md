@@ -1,7 +1,7 @@
 # ROADMAP — Buzsu Growth OS
 
 **Son güncelleme:** 2026-06-30  
-**Versiyon:** 3.0 (Sprint-3)
+**Versiyon:** 5.0 (Sprint-5)
 
 ---
 
@@ -75,9 +75,22 @@
 - [x] `knowledge-graph/` yapısı (11 kategori klasörü)
 - [x] KG README — entity mimarisi, SEO/GEO/Schema/AI Commerce/WebMCP ilişkileri
 - [x] 10 entity seed dosyası
-- [ ] **Sprint-3:** 40 entity (teknolojiler, rakip markalar, sertifikalar)
-- [ ] **Sprint-4:** 100 entity
-- [ ] **Sprint-5:** 150–200 entity (hedef)
+- [ ] **Sprint-6:** 40 entity (teknolojiler, rakip markalar, sertifikalar)
+- [ ] **Sprint-7:** 100 entity
+- [ ] **Sprint-8:** 150–200 entity (hedef)
+
+#### 5.4 — Automation Layer (Sprint-5 ✅)
+- [x] `automation/n8n/` mimari katmanı + README (retry/hata/PII desenleri)
+- [x] 10 workflow tanımı (architecture-only, çalıştırma yok):
+  - daily-seo-monitor, serp-tracker, airtable-sync, dashboard-refresh, entity-indexer
+  - schema-validator, whatsapp-lead, merchant-feed-check, ai-overview-monitor, featured-snippet-monitor
+- [x] Her workflow `lib/` data layer ile hizalandı (tek doğruluk kaynağı)
+- [x] Yazma sınıflandırması (CLAUDE.md MAJOR/MINOR) belgelendi
+- [ ] **Sprint-6:** whatsapp-lead n8n staging'de oluştur + dry-run (insan onayı)
+- [ ] **Sprint-6:** Merkezi Error Trigger workflow tanımı
+- [ ] **Sprint-6:** Dashboard cache store kararı (dashboard-refresh hedefi)
+
+> **Sprint-5 sınırı:** Hiçbir workflow oluşturulmadı/çalıştırılmadı; Airtable'a yazılmadı; canlı siteye dokunulmadı. Yalnızca production architecture.
 
 ---
 
