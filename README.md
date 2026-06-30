@@ -48,22 +48,26 @@ Kullanıcı Talebi
 
 ---
 
-## Platform Katmanı (Sprint-2 → Sprint-3)
+## Platform Katmanı (Sprint-2 → Sprint-6)
 
 Sprint-2 ile `buzsu-growth-os` dokümantasyon deposu olmaktan çıkıp gerçek bir platform altyapısına dönüştü.  
-Sprint-3 ile mock UI'nin altına gerçek bir TypeScript data layer kuruldu (`lib/`, `types/`, `config/`, `knowledge-graph/api/`).
+Sprint-3 ile TypeScript data layer (`lib/`, `types/`, `config/`, `knowledge-graph/api/`) kuruldu.  
+Sprint-4 ile Dashboard UI widget'ları DashboardSnapshot'a bağlandı.  
+Sprint-5 ile `automation/n8n/` katmanı 10 workflow tanımıyla oluşturuldu.  
+Sprint-6 ile ilk gerçek n8n workflow — **schema-validator** — inactive draft olarak n8n'e yüklendi.
 
 | Katman | Klasör | Durum |
 |--------|--------|-------|
-| Dashboard UI | `dashboard/` | Next.js 14 iskelet, mock data |
+| Dashboard UI | `dashboard/` | Next.js 14, DashboardSnapshot'a bağlı |
 | Data Layer | `lib/` | 5 connector client (Mock/Live), dashboard-service |
 | Domain Tipleri | `types/` | 8 tip dosyası |
 | Feature Flags | `config/` | `USE_MOCK_DATA` + connector bayrakları |
 | Connector Mimarisi | `connectors/` | Airtable ✅, Serper/GSC/GA4/MC planlandı |
 | Knowledge Graph | `knowledge-graph/` | 10 entity seed + okuma API'si (`api/`) |
-| Automation Layer | `automation/n8n/` | 10 workflow tanımı (architecture-only) |
+| Automation Layer | `automation/n8n/` | 10 workflow tanımı; schema-validator n8n'de inactive draft ✅ |
 
-**Veri modu:** `USE_MOCK_DATA=true` (varsayılan) tüm connector'ları mock'a sabitler. Live mod stub (Sprint-4'te uygulanacak). Şablon: [`.env.example`](.env.example).
+**Veri modu:** `USE_MOCK_DATA=true` (varsayılan) tüm connector'ları mock'a sabitler. Şablon: [`.env.example`](.env.example).  
+**n8n Workflow:** `Buzsu - Schema Validator - Draft` — ID `wiIX2PkAsVkL016P` — inactive, manuel dry-run hazır.
 
 ---
 

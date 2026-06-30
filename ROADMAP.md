@@ -1,7 +1,7 @@
 # ROADMAP — Buzsu Growth OS
 
 **Son güncelleme:** 2026-06-30  
-**Versiyon:** 5.0 (Sprint-5)
+**Versiyon:** 6.0 (Sprint-6)
 
 ---
 
@@ -79,18 +79,27 @@
 - [ ] **Sprint-7:** 100 entity
 - [ ] **Sprint-8:** 150–200 entity (hedef)
 
-#### 5.4 — Automation Layer (Sprint-5 ✅)
+#### 5.4 — Automation Layer (Sprint-5 ✅ → Sprint-6 🔄)
 - [x] `automation/n8n/` mimari katmanı + README (retry/hata/PII desenleri)
 - [x] 10 workflow tanımı (architecture-only, çalıştırma yok):
   - daily-seo-monitor, serp-tracker, airtable-sync, dashboard-refresh, entity-indexer
   - schema-validator, whatsapp-lead, merchant-feed-check, ai-overview-monitor, featured-snippet-monitor
 - [x] Her workflow `lib/` data layer ile hizalandı (tek doğruluk kaynağı)
 - [x] Yazma sınıflandırması (CLAUDE.md MAJOR/MINOR) belgelendi
+- [x] **Sprint-6:** `schema-validator` n8n'de inactive draft olarak oluşturuldu (ID: `wiIX2PkAsVkL016P`)
+  - 7 node: Manual Trigger → Set URLs → HTTP Request → Extract/Validate JSON-LD → IF → Pass/Fail
+  - Doğrulanan tipler: Product, ItemList, BreadcrumbList, FAQPage, Organization, CollectionPage
+  - Hedef URL'ler: 4 Buzsu sayfası
+  - `validate_workflow` ✅ · `create_workflow_from_code` ✅ · **Publish edilmedi**
+- [x] **Sprint-6:** `schema-validator.md` implementation-ready'e yükseltildi
 - [ ] **Sprint-6:** whatsapp-lead n8n staging'de oluştur + dry-run (insan onayı)
 - [ ] **Sprint-6:** Merkezi Error Trigger workflow tanımı
-- [ ] **Sprint-6:** Dashboard cache store kararı (dashboard-refresh hedefi)
+- [ ] **Sprint-7:** schema-validator dry-run (insan → n8n Test Workflow)
+- [ ] **Sprint-7:** schema-validator → Schedule Trigger production upgrade
+- [ ] **Sprint-7:** Dashboard cache store kararı (dashboard-refresh hedefi)
 
-> **Sprint-5 sınırı:** Hiçbir workflow oluşturulmadı/çalıştırılmadı; Airtable'a yazılmadı; canlı siteye dokunulmadı. Yalnızca production architecture.
+> **Sprint-5 sınırı:** Hiçbir workflow oluşturulmadı/çalıştırılmadı. Yalnızca production architecture.  
+> **Sprint-6:** İlk n8n workflow oluşturuldu — inactive/draft, canlıya alınmadı, Airtable'a yazılmadı.
 
 ---
 
