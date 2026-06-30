@@ -247,3 +247,126 @@ WhatsApp satış kanalı, Airtable CRM, küçük ölçekli e-ticaret) göre önc
 *Bu rapor `drafts/` konumuna değil doğrudan `reports/` altına yazıldı çünkü doğrudan çıktı
 üretmez; sadece mevcut entegrasyonu belgeler ve insan kararına girdi sağlar. Canlı siteye
 etkisi yoktur.*
+
+---
+
+## Second Integration Wave
+
+**Tarih**: 2026-06-30
+**Şube**: `claude/buzsu-external-repo-integration-tuc18c`
+
+### İncelenen Repolar
+
+| # | Repo | Analiz Yöntemi | Lisans | Kullanım Durumu |
+|---|------|----------------|--------|-----------------|
+| 1 | `vercel-labs/skills` | README (main) | **Bulunamadı** | Kısmen kullanıldı |
+| 2 | `multica-ai/andrej-karpathy-skills` | README (main) | **Bulunamadı** | Kullanıldı |
+| 3 | `browser-use/video-use` | README (main) | MIT | Kullanıldı |
+| 4 | `harry0703/MoneyPrinterTurbo` | README (main) | MIT | Kullanıldı |
+
+### Repo Bazlı Analiz
+
+#### vercel-labs/skills (lisans bulunamadı)
+
+- **Analiz edildi**: YAML frontmatter tabanlı skill tanım standardı (name + description
+  zorunlu alanlar); 70+ platform desteği; symlink vs. copy kurulum stratejileri;
+  CI/CD non-interactive modları; proje-kapsamlı vs. global deployment farkı.
+- **Oluşturulan dosyalar**: `skills/frontend/` (5 dosya), `skills/planning/` (kısmen).
+- **Geliştirilen skill**: Var olan format standardı Wave 1'den türetilmişti; bu repo
+  Vercel deployment pratiklerini `skills/frontend/`, `skills/performance/`,
+  `knowledge/frontend-best-practices.md`'ye somutlaştırdı.
+- **Alınmayanlar**: Kurulum CLI kodu; platform katalog listesi (70+ agent adı);
+  symlink implementasyonu — bunlar BUZSU'nun dosya tabanlı skill yaklaşımıyla uyumsuz.
+- **Lisans değerlendirmesi**: LICENSE dosyası bulunamadı. Yalnızca genel tasarım
+  desenleri (YAML frontmatter, deployment aşama sırası) uyarlandı; repo metninin
+  kendisi kopyalanmadı. İçerik genişletilecekse lisans durumu doğrulanmalı.
+- **BUZSU kullanım amacı**: Next.js + Vercel stack kullanıyoruz; deployment
+  pratikleri ve skill format standardı doğrudan uygulanabilir.
+
+#### multica-ai/andrej-karpathy-skills (lisans bulunamadı)
+
+- **Analiz edildi**: 4 temel prensip (kod yazmadan varsayım açma, basitlik önceliği,
+  cerrahi değişiklik, doğrulanabilir hedef); multi-step decomposition; test-first
+  debugging; anti-overengineering.
+- **Oluşturulan dosyalar**: `skills/coding/` (5 dosya), `skills/debugging/` (5 dosya),
+  `skills/refactoring/` (5 dosya), `skills/planning/` (5 dosya).
+- **Geliştirilen skill**: Bu 4 modül Wave 1'de yoktu; tamamen yeni.
+- **Alınmayanlar**: Herhangi bir metin/kod/prompt birebir kopyalanmadı. Repo metninden
+  yalnızca kavramsal çerçeve (4 prensip) uyarlandı; BUZSU bağlamına (CI4, Next.js,
+  Airtable) tamamen yeniden yazıldı.
+- **Lisans değerlendirmesi**: LICENSE dosyası bulunamadı. Kavramsal çerçeve
+  (fikir/prensip) telif hakkıyla korunmaz; bunun ötesinde hiçbir ifade kopyalanmadı.
+  İçerik genişletilecekse lisans doğrulanmalı.
+- **BUZSU kullanım amacı**: BUZSU'nun en büyük riski belirsiz görevlerde yanlış
+  varsayımla ilerlemek. Karpathy çerçevesi bunu önleyen en pratik seti sunuyor;
+  CLAUDE.md'nin "kör öneri yapılmaz" kuralıyla birebir örtüşüyor.
+
+#### browser-use/video-use (MIT)
+
+- **Analiz edildi**: Metin-önce video düzenleme mimarisi; transkripsiyon → 12KB
+  markdown paketi → LLM akıl yürütme → EDL → render → 3x otomatik yeniden render;
+  ses birincil düzenleme sinyali; 12 production kuralı; HyperFrames/Remotion paralel
+  alt-agent animasyon.
+- **Oluşturulan dosyalar**: `skills/video-automation/` (5 dosya),
+  `knowledge/video-workflows.md`, `playbooks/video-automation-playbook.md`.
+- **Geliştirilen skill**: `skills/video/` (Wave 1, genel video) farklı; `video-automation/`
+  pipeline mimarisine odaklı yeni modül.
+- **Alınmayanlar**: browser-use tool kodu kurulmadı/çalıştırılmadı (yeni bağımlılık = MAJOR).
+  "12 hard rules" metninin kendisi kopyalanmadı; prensipler özetlendi.
+- **Lisans değerlendirmesi**: MIT ✓ — ticari kullanım serbest. İçerik uyarlandı.
+- **BUZSU kullanım amacı**: Suvesu.com'un bilgi içerikleri → video formatı dönüşümü için
+  "metin önce" yaklaşım çok uygun (içerik zaten metin tabanlı). Video üretim planlamada
+  ses/transkripsiyon önceliği pratiği kullanılabilir.
+
+#### harry0703/MoneyPrinterTurbo (MIT)
+
+- **Analiz edildi**: 6 aşamalı kısa video pipeline (senaryo → görsel kaynak →
+  TTS seslendirme → altyazı → müzik → yayın); royalty-free kaynak seçenekleri
+  (Pexels/Pixabay/Coverr); Türkçe dahil çoklu TTS desteği; 9:16 ve 16:9 format;
+  Claude dahil çoklu LLM entegrasyonu; MVC mimari; Docker/Windows deployment.
+- **Oluşturulan dosyalar**: `skills/video-automation/` (birleşik kaynak),
+  `knowledge/video-workflows.md`, `playbooks/video-automation-playbook.md`,
+  `templates/video-script-template.md`.
+- **Geliştirilen skill**: `skills/video/` (Wave 1) bu repoya referans vermemişti;
+  `video-automation/` modülü bu pipeline'ı entegre etti.
+- **Alınmayanlar**: Yazılım kurulmadı/çalıştırılmadı (yeni bağımlılık = MAJOR; Docker
+  setup = MAJOR). Kaynak kodu kopyalanmadı. TwelveLabs, Azure gibi ücretli servis
+  entegrasyonları eklenmedi (yeni bağımlılık).
+- **Lisans değerlendirmesi**: MIT ✓ — ticari kullanım serbest. Pipeline mantığı uyarlandı.
+- **BUZSU kullanım amacı**: Buzsu ürün tanıtım videoları ve Suvesu eğitim klipleri için
+  6 aşamalı pipeline çerçevesi rehber olarak kullanılacak. Türkçe TTS ve royalty-free
+  görsel kaynakları (Pexels/Pixabay/Coverr) özellikle değerli.
+
+### Oluşturulan Dosyalar (Wave 2 Özeti)
+
+| Kategori | Yeni Dosya | Güncellenen Dosya |
+|---|---|---|
+| `skills/coding/` | 5 | 0 |
+| `skills/debugging/` | 5 | 0 |
+| `skills/refactoring/` | 5 | 0 |
+| `skills/planning/` | 5 | 0 |
+| `skills/frontend/` | 5 | 0 |
+| `skills/performance/` | 5 | 0 |
+| `skills/video-automation/` | 5 | 0 |
+| `playbooks/` | 5 | 0 |
+| `knowledge/` | 4 | 0 |
+| `templates/` | 4 | 0 |
+| `reports/external-repo-integration-report.md` | 0 | 1 |
+| **Toplam** | **48** | **1** |
+
+### Wave 2 Lisans Özeti
+
+| Repo | Lisans | Kullanım Kararı |
+|---|---|---|
+| vercel-labs/skills | Bulunamadı | Yalnızca genel desen uyarlandı |
+| multica-ai/andrej-karpathy-skills | Bulunamadı | Kavramsal çerçeve uyarlandı, metin kopyalanmadı |
+| browser-use/video-use | MIT ✓ | Uyarlandı |
+| harry0703/MoneyPrinterTurbo | MIT ✓ | Uyarlandı |
+
+### Sonraki Yapılacaklar (Wave 2 Sonrası)
+
+- [ ] `vercel-labs/skills` ve `multica-ai/andrej-karpathy-skills` lisans durumunu doğrula.
+- [ ] `skills/coding/` prensiplerini AGENTS.md'ye referans olarak ekle (MINOR, onay gerekli).
+- [ ] Video automation için gerçek bir pilot içerik (Suvesu → YouTube Shorts) dene;
+  `playbooks/video-automation-playbook.md`'yi güncelle.
+- [ ] Türkçe TTS servisi karşılaştırması için görev aç (Edge TTS TR kalitesi değerlendirmesi).
