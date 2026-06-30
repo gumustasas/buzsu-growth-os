@@ -50,7 +50,7 @@ n8n üzerinde **"Buzsu - Schema Validator - Draft"** adıyla 7 node'lu bir workf
                                    • foundTypes vs REQUIRED_TYPES diff
                                    • 1 summary item döndürür
       ↓
-[All Schemas Valid?]        ← IF node; $json.summary.allPassed boolean
+[All Schemas Valid?]        ← IF node; expression: ={{ $json.summary.allPassed === true }}; op: is true
     ↓               ↓
 [Validation       [Schema Errors
  Passed]           Detected]

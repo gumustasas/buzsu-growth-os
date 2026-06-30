@@ -3,7 +3,7 @@
 **Durum:** Implementation-Ready (Draft) · **Öncelik:** P1 · **Yazma:** Rapor (bildirim)  
 **n8n Workflow ID:** `wiIX2PkAsVkL016P` · **n8n Adı:** `Buzsu - Schema Validator - Draft`  
 **Sprint-6:** 2026-06-30 — Inactive draft olarak n8n'e yüklendi. Manuel dry-run hazır.  
-**Bugfix:** IF node boolean tip hatası düzeltildi — `rightValue: ''` kaldırıldı, tip açık olarak `Boolean` olarak ayarlandı.
+**Bugfix:** IF node "All Schemas Valid?" — expression `={{ $json.summary.allPassed === true }}`, Operation: `is true`, rightValue kaldırıldı.
 
 ---
 
@@ -70,7 +70,7 @@ Buzsu.com.tr kritik sayfalarındaki schema.org markup'ını doğrular: Product, 
 2. **Set Target URLs** (Code, runOnceForAllItems) — 4 URL × label → 4 item
 3. **Fetch Page HTML** (HTTP Request GET) — `{{ $json.url }}`, responseFormat: text, neverError: true, timeout: 15s
 4. **Extract and Validate JSON-LD** (Code, runOnceForAllItems) — HTML parse + schema tip kontrolü + summary aggregate
-5. **All Schemas Valid?** (IF) — Value: `{{ $json.summary.allPassed }}` · Type: **Boolean** · Operation: **is true** · no rightValue (unary check)
+5. **All Schemas Valid?** (IF) — Expression: `={{ $json.summary.allPassed === true }}` · Operation: **is true** · rightValue: yok (unary check)
 6. **Validation Passed** (Set, onTrue) — `reportStatus: ALL_SCHEMAS_VALID`
 7. **Schema Errors Detected** (Stop and Error, onFalse) — `{{ $json.summary.totalFailed }} URL(s) missing schema types`
 
