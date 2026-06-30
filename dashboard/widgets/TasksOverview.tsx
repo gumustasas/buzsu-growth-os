@@ -1,13 +1,9 @@
 import { ModuleCard } from '@/components/ModuleCard'
+import type { TasksOverviewData } from '@/types'
 
-const tasks = [
-  { id: 'TASK-001', title: 'SERP + HTML analizi', status: 'partial', area: 'seo' },
-  { id: 'TASK-003', title: 'Product Schema mimarisi', status: 'done', area: 'schema' },
-  { id: 'TASK-004', title: 'Airtable alan tanımı', status: 'done', area: 'schema' },
-  { id: 'TASK-005', title: 'CI4 entegrasyon planı', status: 'done', area: 'schema' },
-  { id: 'TASK-006', title: 'CI4 Product Schema deploy', status: 'blocked', area: 'schema' },
-  { id: 'SPRINT-002', title: 'Dashboard + KG temeli', status: 'active', area: 'platform' },
-]
+interface TasksOverviewProps {
+  data: TasksOverviewData
+}
 
 const statusStyle: Record<string, string> = {
   done: 'badge-ok',
@@ -25,11 +21,12 @@ const statusLabel: Record<string, string> = {
   pending: 'Bekliyor',
 }
 
-export function TasksOverview() {
+export function TasksOverview({ data }: TasksOverviewProps) {
+  const status = data.source === 'mock' ? 'mock' : 'live'
   return (
-    <ModuleCard title="Görevler" icon="✅" status="mock">
+    <ModuleCard title="Görevler" icon="✅" status={status}>
       <ul className="space-y-2">
-        {tasks.map((t) => (
+        {data.tasks.map((t) => (
           <li key={t.id} className="flex items-center justify-between text-xs">
             <span className="text-slate-500 w-20 shrink-0">{t.id}</span>
             <span className="text-slate-700 flex-1 truncate">{t.title}</span>
@@ -37,6 +34,11 @@ export function TasksOverview() {
           </li>
         ))}
       </ul>
+      <div className="mt-3 pt-3 border-t border-slate-100 flex justify-between text-xs text-slate-500">
+        <span>Aktif: <strong className="text-blue-600">{data.activeCount}</strong></span>
+        <span>Tamam: <strong className="text-green-600">{data.doneCount}</strong></span>
+        <span>Blocked: <strong className="text-red-600">{data.blockedCount}</strong></span>
+      </div>
     </ModuleCard>
   )
 }
