@@ -3,8 +3,8 @@
 ## Gerekli Yapılandırma Değişkenleri
 
 ```
-BUZSU_SITE_BASE_URL      # Örn: https://buzsu.com.tr
-GSC_PROPERTY_URL         # Örn: https://buzsu.com.tr  (GSC'de tanımlı property)
+BUZSU_SITE_BASE_URL      # https://www.buzsu.com.tr
+GSC_PROPERTY_URL         # GSC'de tanımlı property URL'i
 ```
 
 Değişken değerleri `config/.env.example` dosyasından alınır. Gerçek değerler
@@ -16,55 +16,57 @@ environment variable olarak saklanır; repoya yazılmaz.
 
 ### 1. Mevcut Durum Analizi
 - GSC'de `$GSC_PROPERTY_URL` için AI Overview izlenimlerini kontrol et
-  - Performans → Arama türü: Web → Filtrele: AI Overview
-- Hangi sorgularda AI Overview çıkıyor? (varsa kaydet)
+  (Performans → Arama türü: Web → Filtre: AI Overview)
+- Hangi sorgularda AI Overview çıkıyor? Varsa kaydet.
 
 ### 2. LLM Doğruluk Testi
 Aşağıdaki sorguları ChatGPT ve Perplexity'de çalıştır; dönen bilgiyi not al:
-- "Buzsu su arıtma cihazı fiyatı"
-- "Buzsu tezgah altı su arıtma cihazı özellikleri"
-- "pompasız su arıtma cihazı ne işe yarar"
+- "Buzsu su arıtma cihazı ne kadar?"
+- "Buzsu UV filtreli tezgah altı cihaz özellikleri"
+- "atıksız su arıtma cihazı nedir"
+- "CODE su arıtma cihazı filtre değişim süresi"
 
-Yanlış veya eksik bilgi → `/drafts/llm-dogruluk-testi-[YYYY-MM].md` olarak kaydet.
+Yanlış veya eksik bilgi → `/drafts/llm-dogruluk-testi-[YYYY-MM].md`
 
 ### 3. İçerik Boşluk Haritası
-Konuşma sorgularına yanıt vermeyen sayfaları belirle. Başlangıç URL'leri:
-- `$BUZSU_SITE_BASE_URL/urunler/tezgah-alti-su-aritma/`
-- `$BUZSU_SITE_BASE_URL/urunler/pompasiz-su-aritma/`
-- `$BUZSU_SITE_BASE_URL/urunler/yedek-filtre/`
-- `$BUZSU_SITE_BASE_URL/sss/`
-- `$BUZSU_SITE_BASE_URL/hakkimizda/`
+Konuşma sorgularına yanıt vermeyen sayfaları belirle.
+Repo'dan doğrulanmış başlangıç URL'leri:
+- `$BUZSU_SITE_BASE_URL/su-aritma-cihazlari/` — kategori
+- `$BUZSU_SITE_BASE_URL/uv-filtreli-tezgah-alti-su-aritma-cihazi-pompali-model/` — tezgah altı pompalı
+- `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi/` — CODE cihaz
+- `$BUZSU_SITE_BASE_URL/atiksiz-su-aritma-cihazi/` — atıksız cihaz
+- `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi-5-li-filtre-seti-made-in-korea/` — filtre seti
+- `<BUZSU_FAQ_URL>` — SSS sayfası (path repoda doğrulanmadı; gerçek URL'yi ekle)
+- `<BUZSU_ABOUT_URL>` — Hakkımızda (path repoda doğrulanmadı; gerçek URL'yi ekle)
 
 ### 4. Özet Paragraf Ekleme
 Her hedef ürün sayfasına 40-60 kelimelik AI snippet paragrafı yaz.
 
-Örnek sorgu → yanıt çifti:
-- Sorgu: "tezgah altı su arıtma cihazı nasıl çalışır?"
-- Yanıt formatı: "Buzsu tezgah altı su arıtma cihazı, [teknik açıklama]. Kurulum [süre] sürer..."
+Öncelikli sayfalar ve örnek sorgu çiftleri:
+- `uv-filtreli-tezgah-alti-su-aritma-cihazi-pompali-model`
+  → "UV filtreli tezgah altı su arıtma cihazı nedir, nasıl çalışır?"
+- `code-su-aritma-cihazi`
+  → "CODE su arıtma cihazı özellikleri nelerdir?"
+- `atiksiz-su-aritma-cihazi`
+  → "Atıksız su arıtma cihazı ne anlama gelir?"
 
 Taslakları `/drafts/content/ai-snippet-[sayfa-slug].md` olarak kaydet.
 
 ### 5. FAQ Bölümü
 Her ürün sayfasına en az 5 S&C ekle.
-Yüksek öncelikli sayfalar:
-- `/urunler/tezgah-alti-su-aritma/` — "hangi mutfak tiplerine uyar, kaç litre/gün üretir?"
-- `/urunler/pompasiz-su-aritma/` — "apartman tipi mi, daire mi, basınç gerekir mi?"
-- `/sss/` — genel kullanım ve bakım soruları
-
 FAQPage schema taslağı için schema-automation skill devreye girer.
 
 ### 6. llms.txt Taslağı
-`$BUZSU_SITE_BASE_URL/llms.txt` için taslak yaz → `/drafts/llms-txt-v1.md`
+`$BUZSU_SITE_BASE_URL/llms.txt` için taslak → `/drafts/llms-txt-v1.md`
 
 ### 7. Schema Güncellemesi
-schema-automation skill ile koordineli çalış; FAQPage ve Product şemalarını güncelle.
+schema-automation skill ile koordineli; FAQPage ve Product şemalarını güncelle.
 
 ### 8. Onay ve Yayın
 Tüm değişiklikler `/drafts` üzerinden insan onayına sunulur.
-Canlıya almak için developer + insan onayı zorunludur.
 
 ### 9. İzleme (4 hafta sonra)
-- GSC `$GSC_PROPERTY_URL` → AI Overview izlenimlerini ölç
+- GSC AI Overview izlenimlerini ölç
 - LLM doğruluk testini tekrar çalıştır
 
 ## Onay Notu

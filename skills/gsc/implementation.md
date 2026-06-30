@@ -3,48 +3,47 @@
 ## Gerekli Yapılandırma Değişkenleri
 
 ```
-GSC_PROPERTY_URL         # GSC'de tanımlı property URL'i — Örn: https://buzsu.com.tr
+GSC_PROPERTY_URL         # GSC'de tanımlı property URL'i — https://www.buzsu.com.tr
 AIRTABLE_BASE_ID         # Raporların kaydedileceği Airtable base ID'si
 ```
 
 Değerler `config/.env.example` dosyasından alınır; repoya yazılmaz.
-Bu skill yalnızca okuma yapar; GSC'ye veya Airtable'a yazma yapmaz.
+Bu skill yalnızca okuma yapar.
 
 ---
 
 ## Adımlar
 
 ### 1. Rapor Periyodu Seç
-- Aylık rapor → son 28 gün + önceki 28 gün karşılaştırması
+- Aylık rapor → son 28 gün + önceki 28 gün
 - Hızlı kontrol → son 7 gün
 - Trend analizi → son 90 gün
 
 ### 2. Performans Verisi Çek
-`$GSC_PROPERTY_URL` için:
-- Toplam tıklama / izlenim / CTR / ort. pozisyon
-- Cihaz bazlı ayrım (mobil öncelikli — BUZSU trafiğinin büyük çoğunluğu mobil)
+`$GSC_PROPERTY_URL` için tıklama / izlenim / CTR / ort. pozisyon.
+Cihaz bazlı (mobil öncelikli).
 
-İzlenecek anahtar sorgular (önceki dönemle karşılaştır):
+İzlenecek anahtar sorgular:
 - "su arıtma cihazı" ve varyantları
-- "tezgah altı su arıtma"
-- "pompasız su arıtma"
+- "tezgah altı su arıtma" — `/uv-filtreli-tezgah-alti-su-aritma-cihazi-pompali-model/` ile eşleştir
+- "atıksız su arıtma" — `/atiksiz-su-aritma-cihazi/` ile eşleştir
+- "CODE su arıtma" — `/code-su-aritma-cihazi/` ile eşleştir
+- "su arıtma cihazı filtresi" — `/code-su-aritma-cihazi-5-li-filtre-seti-made-in-korea/` ile eşleştir
 - "Buzsu" (marka araması)
-- "su arıtma cihazı fiyatı" (yüksek ticari niyet)
 
 ### 3. Kapsam Raporu
 `$GSC_PROPERTY_URL` → Kapsam:
 - "Dizine alındı" sayısı bu ay vs geçen ay
 - Hata türleri: 4xx, noindex, redirect hatası
-- Özellikle kontrol et: `/urunler/*` sayfaları dizinde mi?
+- Doğrulanmış ürün URL'leri dizinde mi? (su-aritma-cihazlari, code-su-aritma, atiksiz, tezgah-alti)
 
 ### 4. Zenginleştirilmiş Sonuç Kontrolü
 `$GSC_PROPERTY_URL` → Zenginleştirilmiş Sonuçlar:
 - Product şemaları aktif mi? (ürün sayfaları)
-- FAQPage aktif mi? (`/sss/` sayfası)
+- FAQPage aktif mi? (`<BUZSU_FAQ_URL>` — doğrulandıktan sonra kontrol et)
 - Hata sayısı artıyor mu?
 
 ### 5. CWV ve Sayfa Deneyimi
-`$GSC_PROPERTY_URL` → Sayfa Deneyimi:
 - CWV: kaç URL "İyi" kategorisinde?
 - Mobil uyumluluk sorunu var mı?
 
@@ -56,8 +55,6 @@ Rapordan **kesinlikle çıkar:**
 - Sipariş veya CRM verisi
 - `$AIRTABLE_BASE_ID` veya herhangi bir credential
 
-Raporun Airtable'a işlenmesi manuel onay gerektiren ayrı bir adımdır.
-
 ### 7. Aksiyon Listesi
 Bulgulara göre ilgili skill'e görev oluştur:
 - Şema hatası → schema-automation skill
@@ -67,7 +64,6 @@ Bulgulara göre ilgili skill'e görev oluştur:
 
 ## Onay Notu
 Okuma işlemi onay gerektirmez.
-Aksiyon alındığında ilgili skill'in onay süreci devreye girer.
 Airtable'a rapor yazma ayrı MINOR onay gerektirir.
 
 ## İlgili Skill'ler
