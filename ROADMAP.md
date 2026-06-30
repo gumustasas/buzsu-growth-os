@@ -1,7 +1,7 @@
 # ROADMAP — Buzsu Growth OS
 
 **Son güncelleme:** 2026-06-30  
-**Versiyon:** 1.0
+**Versiyon:** 2.0 (Sprint-2)
 
 ---
 
@@ -41,6 +41,33 @@
 ---
 
 ## Aktif Fazlar
+
+### Faz 5 — Platform Altyapısı — Dashboard + Connectors + Knowledge Graph 🔄
+**Sprint:** Sprint-2 (2026-06-30)  
+**Model:** Mock data ile iskelet kurulum → Sprint-3'te live connector'lar.
+
+#### 5.1 — Dashboard (Sprint-2 ✅)
+- [x] Next.js 14 App Router iskelet (`dashboard/`)
+- [x] Sidebar, MetricCard, ModuleCard bileşenleri
+- [x] 6 widget: SeoOverview, GeoOverview, SnippetOverview, SchemaOverview, TasksOverview, EntityGraphOverview
+- [ ] **Sprint-3:** Airtable live connector → ürün ve KPI widget'ları canlı veri
+
+#### 5.2 — Connectors (Sprint-2 ✅)
+- [x] Connector mimarisi ve README'ler (5 connector)
+- [x] Airtable connector — okuma aktif (TASK'lardan)
+- [ ] **Sprint-3:** Serper connector — SERP snapshot otomasyonu
+- [ ] **Sprint-3:** GSC connector — n8n → Airtable KPI pipeline
+- [ ] **Sprint-4:** GA4 + Merchant Center connector
+
+#### 5.3 — Knowledge Graph (Sprint-2 ✅)
+- [x] `knowledge-graph/` yapısı (11 kategori klasörü)
+- [x] KG README — entity mimarisi, SEO/GEO/Schema/AI Commerce/WebMCP ilişkileri
+- [x] 10 entity seed dosyası
+- [ ] **Sprint-3:** 40 entity (teknolojiler, rakip markalar, sertifikalar)
+- [ ] **Sprint-4:** 100 entity
+- [ ] **Sprint-5:** 150–200 entity (hedef)
+
+---
 
 ### Faz 4 — Buzsu SEO/GEO/CRO İlk Canlı Uygulama 🔄
 **Ana hedef URL:** `https://www.buzsu.com.tr/su-aritma-cihazlari/`  
@@ -113,7 +140,14 @@
 
 ---
 
-### Faz 5 — Buzsu.com.tr Site Geneli SEO Temeli 📋
+### Faz 4 Schema — TASK-006 Product Schema Entegrasyonu ⏸️ Blocked
+**Blocker:** Airtable'da SKU, Image URL ve Schema Description alanları henüz doldurulmadı.  
+**Sonraki adım:** Bu alanlar dolduğunda `feat/product-schema-ci4` branch açılır (TASK-005 planı hazır).  
+**Bağımlılık:** TASK-004 (Airtable alan tanımı) → insan onayı bekliyor.
+
+---
+
+### Faz 6 — Buzsu.com.tr Site Geneli SEO Temeli 📋
 **Öneri:** Faz 4 tamamlandıktan sonra başla. Odak: Buzsu.com.tr ana domenin tüm kritik sayfaları.
 
 - [ ] Hedef anahtar kelime listesi — Buzsu ürün kategorilerine göre (seo-agent)

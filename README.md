@@ -48,6 +48,18 @@ Kullanıcı Talebi
 
 ---
 
+## Platform Katmanı (Sprint-2)
+
+Sprint-2 ile `buzsu-growth-os` dokümantasyon deposu olmaktan çıkıp gerçek bir platform altyapısına dönüştü.
+
+| Katman | Klasör | Durum |
+|--------|--------|-------|
+| Dashboard | `dashboard/` | Next.js 14 iskelet, mock data |
+| Connectors | `connectors/` | Airtable ✅, Serper/GSC/GA4/MC planlandı |
+| Knowledge Graph | `knowledge-graph/` | 10 entity seed, 150 hedef |
+
+---
+
 ## Dizin Yapısı
 
 ```
@@ -56,64 +68,48 @@ buzsu-growth-os/
 ├── AGENTS.md              ← Agent sistemi referansı
 ├── README.md              ← Bu dosya
 ├── ROADMAP.md             ← Geliştirme yol haritası
-├── MIGRATION_REPORT.md    ← AtlasOS → Buzsu Growth OS geçiş raporu
-├── airtable-schema.md     ← CRM şema referansı
-├── lead-entry-audit.md    ← Lead entry point denetim raporu
+│
+├── dashboard/             ← Next.js 14 Growth OS panosu (Sprint-2)
+│   ├── app/               ← App Router (page.tsx, layout.tsx)
+│   ├── components/        ← Sidebar, MetricCard, ModuleCard
+│   └── widgets/           ← SEO, GEO, Snippet, Schema, Tasks, EntityGraph
+│
+├── connectors/            ← Dış veri kaynağı mimarisi (Sprint-2)
+│   ├── airtable/          ← CRM connector (okuma aktif)
+│   ├── serper/            ← SERP + AI Overview connector (planlandı)
+│   ├── gsc/               ← Google Search Console (planlandı)
+│   ├── ga4/               ← Google Analytics 4 (planlandı)
+│   └── merchant-center/   ← Google Merchant Center (planlandı)
+│
+├── knowledge-graph/       ← Entity-bazlı bilgi yapısı (Sprint-2)
+│   ├── entities/          ← Organizasyon entity'leri
+│   ├── brands/            ← Marka entity'leri
+│   ├── products/          ← Ürün entity'leri
+│   ├── components/        ← Bileşen entity'leri
+│   ├── technologies/      ← Teknoloji entity'leri
+│   ├── certifications/    ← Belge entity'leri
+│   ├── minerals/          ← Mineral entity'leri
+│   ├── contaminants/      ← Kirletici entity'leri
+│   ├── faq/               ← SSS entity'leri
+│   ├── glossary/          ← Sözlük
+│   └── locations/         ← Lokasyon entity'leri
 │
 ├── agents/                ← Agent tanım dosyaları (10 agent)
-│   ├── seo-agent.md
-│   ├── geo-agent.md
-│   ├── snippet-agent.md
-│   ├── cro-agent.md
-│   ├── schema-agent.md
-│   ├── eeat-agent.md
-│   ├── content-agent.md
-│   ├── competitor-agent.md
-│   ├── commerce-agent.md
-│   └── automation-agent.md
 │
 ├── docs/                  ← Sistem belgeleri
-│   ├── human-approval.md  ← Onay sistemi ve değişiklik sınıflandırması
-│   ├── operating-model.md ← İşletme modeli ve operasyon ritmi
-│   └── ai-commerce-layer.md ← AI Commerce katmanı protokolü
 │
 ├── tasks/                 ← Aktif ve tamamlanan görevler
 │   ├── seo/
-│   ├── geo/
-│   ├── cro/
 │   ├── schema/
-│   ├── content/
-│   ├── commerce/
-│   └── automation/
+│   └── platform/          ← Sprint görev dosyaları
 │
-├── drafts/                ← İnsan onayı bekleyen çıktılar
-│   ├── content/           ← Blog taslakları, SEO brief'leri
-│   ├── code/              ← Branch + PR taslakları
-│   ├── schema/            ← JSON-LD markup dosyaları
-│   └── workflows/         ← n8n, Airtable otomasyon taslakları
-│
-├── outputs/               ← Onaylanmış, kullanıma hazır çıktılar
-│   ├── reports/           ← SEO, GEO, performans raporları
-│   ├── audits/            ← E-E-A-T, rakip, lead denetimleri
-│   ├── briefs/            ← Yayına hazır içerik brief'leri
-│   └── recommendations/   ← CRO önerileri
-│
-├── workflows/             ← Onaylanmış otomasyon dosyaları
-│   ├── n8n/
-│   ├── serper/
-│   └── airtable/
+├── outputs/               ← Onaylanmış çıktılar
+│   └── reports/
 │
 ├── patches/               ← Diğer repolara uygulanacak hazır yamalar
-│   ├── buzsu-site/        ← Buzsu.com.tr için hazır PR taslakları (aktif)
-│   │   ├── product-schema-v2.md    ← Product + BreadcrumbList schema
-│   │   ├── internal-linking.md     ← İç bağlantı haritası
-│   │   ├── cro-product-page.md     ← CRO güven blokları + CTA hiyerarşisi
-│   │   ├── geo-ai-overview.md      ← GEO içerik + FAQ schema
-│   │   └── whatsapp-sales.md       ← WhatsApp pre-fill satış akışı
-│   └── (diğer repolar için)
+│   └── buzsu-site/
 │
 └── archive/               ← Kullanımdan kalkmış dosyalar
-    └── legacy/patches/suvesu-site/ ← Suvesu-site patch'leri (referans)
 ```
 
 ---
