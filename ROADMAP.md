@@ -1,7 +1,7 @@
 # ROADMAP — Buzsu Growth OS
 
 **Son güncelleme:** 2026-06-30  
-**Versiyon:** 2.0 (Sprint-2)
+**Versiyon:** 3.0 (Sprint-3)
 
 ---
 
@@ -43,8 +43,20 @@
 ## Aktif Fazlar
 
 ### Faz 5 — Platform Altyapısı — Dashboard + Connectors + Knowledge Graph 🔄
-**Sprint:** Sprint-2 (2026-06-30)  
-**Model:** Mock data ile iskelet kurulum → Sprint-3'te live connector'lar.
+**Sprint:** Sprint-2 (iskelet) → Sprint-3 (data layer)  
+**Model:** Mock data ile iskelet kurulum → TypeScript data layer → Sprint-4'te live connector implementasyonu.
+
+#### 5.0 — Live Data Foundation (Sprint-3 ✅)
+- [x] `lib/` data layer: 5 connector client (Airtable, Serper, GSC, GA4, Merchant)
+- [x] Her connector: `client.ts` (interface + Mock/Live fabrika) + `types.ts` + README
+- [x] `lib/dashboard/dashboard-service.ts` — connector orkestrasyonu (`getSnapshot`)
+- [x] `types/` — 8 domain tip dosyası
+- [x] `config/feature-flags.ts` — `USE_MOCK_DATA` + connector aktivasyon bayrakları
+- [x] `knowledge-graph/api/` — entity okuma API'si (index, search, relations)
+- [x] `.env.example` — environment variable şablonu (anahtar yok)
+- [x] Live client'lar stub (`NotImplemented`) — gerçek API çağrısı Sprint-4
+- [ ] **Sprint-4:** Live client implementasyonları (gerçek fetch + auth)
+- [ ] **Sprint-4:** Dashboard UI'ı dashboard-service'e bağla (mock → snapshot)
 
 #### 5.1 — Dashboard (Sprint-2 ✅)
 - [x] Next.js 14 App Router iskelet (`dashboard/`)

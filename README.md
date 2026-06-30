@@ -48,15 +48,21 @@ Kullanıcı Talebi
 
 ---
 
-## Platform Katmanı (Sprint-2)
+## Platform Katmanı (Sprint-2 → Sprint-3)
 
-Sprint-2 ile `buzsu-growth-os` dokümantasyon deposu olmaktan çıkıp gerçek bir platform altyapısına dönüştü.
+Sprint-2 ile `buzsu-growth-os` dokümantasyon deposu olmaktan çıkıp gerçek bir platform altyapısına dönüştü.  
+Sprint-3 ile mock UI'nin altına gerçek bir TypeScript data layer kuruldu (`lib/`, `types/`, `config/`, `knowledge-graph/api/`).
 
 | Katman | Klasör | Durum |
 |--------|--------|-------|
-| Dashboard | `dashboard/` | Next.js 14 iskelet, mock data |
-| Connectors | `connectors/` | Airtable ✅, Serper/GSC/GA4/MC planlandı |
-| Knowledge Graph | `knowledge-graph/` | 10 entity seed, 150 hedef |
+| Dashboard UI | `dashboard/` | Next.js 14 iskelet, mock data |
+| Data Layer | `lib/` | 5 connector client (Mock/Live), dashboard-service |
+| Domain Tipleri | `types/` | 8 tip dosyası |
+| Feature Flags | `config/` | `USE_MOCK_DATA` + connector bayrakları |
+| Connector Mimarisi | `connectors/` | Airtable ✅, Serper/GSC/GA4/MC planlandı |
+| Knowledge Graph | `knowledge-graph/` | 10 entity seed + okuma API'si (`api/`) |
+
+**Veri modu:** `USE_MOCK_DATA=true` (varsayılan) tüm connector'ları mock'a sabitler. Live mod stub (Sprint-4'te uygulanacak). Şablon: [`.env.example`](.env.example).
 
 ---
 
@@ -73,6 +79,22 @@ buzsu-growth-os/
 │   ├── app/               ← App Router (page.tsx, layout.tsx)
 │   ├── components/        ← Sidebar, MetricCard, ModuleCard
 │   └── widgets/           ← SEO, GEO, Snippet, Schema, Tasks, EntityGraph
+│
+├── lib/                   ← TypeScript data layer (Sprint-3)
+│   ├── airtable/          ← client.ts + types.ts + README
+│   ├── serper/            ← client.ts + types.ts + README
+│   ├── gsc/               ← client.ts + types.ts + README
+│   ├── ga4/               ← client.ts + types.ts + README
+│   ├── merchant/          ← client.ts + types.ts + README
+│   └── dashboard/         ← dashboard-service.ts (orkestrasyon)
+│
+├── types/                 ← Domain tipleri (Sprint-3)
+│   ├── seo.ts  geo.ts  schema.ts  entity.ts
+│   └── dashboard.ts  product.ts  task.ts  report.ts
+│
+├── config/                ← feature-flags.ts (USE_MOCK_DATA)
+│
+├── .env.example           ← Environment variable şablonu (Sprint-3)
 │
 ├── connectors/            ← Dış veri kaynağı mimarisi (Sprint-2)
 │   ├── airtable/          ← CRM connector (okuma aktif)
@@ -92,7 +114,8 @@ buzsu-growth-os/
 │   ├── contaminants/      ← Kirletici entity'leri
 │   ├── faq/               ← SSS entity'leri
 │   ├── glossary/          ← Sözlük
-│   └── locations/         ← Lokasyon entity'leri
+│   ├── locations/         ← Lokasyon entity'leri
+│   └── api/               ← Entity okuma API'si: index, search, relations (Sprint-3)
 │
 ├── agents/                ← Agent tanım dosyaları (10 agent)
 │
