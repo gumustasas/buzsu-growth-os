@@ -103,8 +103,17 @@ buzsu-growth-os/
 │   ├── serper/
 │   └── airtable/
 │
-└── patches/               ← Diğer repolara uygulanacak hazır yamalar
-    └── suvesu-site/       ← suvesu-site için hazır PR taslakları
+├── patches/               ← Diğer repolara uygulanacak hazır yamalar
+│   ├── buzsu-site/        ← Buzsu.com.tr için hazır PR taslakları (aktif)
+│   │   ├── product-schema-v2.md    ← Product + BreadcrumbList schema
+│   │   ├── internal-linking.md     ← İç bağlantı haritası
+│   │   ├── cro-product-page.md     ← CRO güven blokları + CTA hiyerarşisi
+│   │   ├── geo-ai-overview.md      ← GEO içerik + FAQ schema
+│   │   └── whatsapp-sales.md       ← WhatsApp pre-fill satış akışı
+│   └── (diğer repolar için)
+│
+└── archive/               ← Kullanımdan kalkmış dosyalar
+    └── legacy/patches/suvesu-site/ ← Suvesu-site patch'leri (referans)
 ```
 
 ---
@@ -142,4 +151,12 @@ Detay: [docs/human-approval.md](docs/human-approval.md)
 - [docs/ai-commerce-layer.md](docs/ai-commerce-layer.md) — AI Commerce protokolü
 - [airtable-schema.md](airtable-schema.md) — CRM şema referansı
 - [lead-entry-audit.md](lead-entry-audit.md) — Lead entry point denetimi
-- [patches/suvesu-site/ai-agent-field-mapping.md](patches/suvesu-site/ai-agent-field-mapping.md) — P1 Fix: AI agent Airtable field mapping
+**Buzsu Patch'leri (aktif):**
+- [patches/buzsu-site/product-schema-v2.md](patches/buzsu-site/product-schema-v2.md) — Product + BreadcrumbList schema
+- [patches/buzsu-site/internal-linking.md](patches/buzsu-site/internal-linking.md) — İç bağlantı haritası
+- [patches/buzsu-site/cro-product-page.md](patches/buzsu-site/cro-product-page.md) — CRO güven blokları + CTA hiyerarşisi
+- [patches/buzsu-site/geo-ai-overview.md](patches/buzsu-site/geo-ai-overview.md) — GEO içerik + FAQ schema
+- [patches/buzsu-site/whatsapp-sales.md](patches/buzsu-site/whatsapp-sales.md) — WhatsApp pre-fill satış akışı
+
+**Arşiv (referans):**
+- [archive/legacy/patches/suvesu-site/ai-agent-field-mapping.md](archive/legacy/patches/suvesu-site/ai-agent-field-mapping.md) — Suvesu AI agent Airtable field mapping
