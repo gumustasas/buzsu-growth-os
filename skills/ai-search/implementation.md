@@ -37,7 +37,7 @@ Repo'dan doğrulanmış başlangıç URL'leri:
 - `$BUZSU_SITE_BASE_URL/atiksiz-su-aritma-cihazi/` — atıksız cihaz
 - `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi-5-li-filtre-seti-made-in-korea/` — filtre seti
 - `<BUZSU_FAQ_URL>` — SSS sayfası (path repoda doğrulanmadı; gerçek URL'yi ekle)
-- `<BUZSU_ABOUT_URL>` — Hakkımızda (path repoda doğrulanmadı; gerçek URL'yi ekle)
+- `$BUZSU_SITE_BASE_URL/hakkimizda/` — Hakkımızda (path repoda doğrulanmadı; gerçek URL'yi ekle)
 
 ### 4. Özet Paragraf Ekleme
 Her hedef ürün sayfasına 40-60 kelimelik AI snippet paragrafı yaz.

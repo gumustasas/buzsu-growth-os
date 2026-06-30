@@ -24,7 +24,7 @@ Aşağıdaki event'ler GA4'te tanımlı mı?
 | `whatsapp_click` | `$BUZSU_SITE_BASE_URL` geneli — tüm WhatsApp butonları |
 | `product_view` | `/su-aritma-cihazlari/`, `/uv-filtreli-tezgah-alti-su-aritma-cihazi-pompali-model/`, `/code-su-aritma-cihazi/`, `/atiksiz-su-aritma-cihazi/` |
 | `filtre_view` | `/code-su-aritma-cihazi-5-li-filtre-seti-made-in-korea/` |
-| `form_submit` | `<BUZSU_CONTACT_URL>` (doğrulanmadı — gerçek path'i ekle) |
+| `form_submit` | `$BUZSU_SITE_BASE_URL/iletisim/` |
 | `search` | Site içi arama |
 
 Eksik event'ler → `/drafts/analytics-event-eksikleri.md`

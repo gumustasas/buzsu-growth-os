@@ -42,8 +42,8 @@ Bulgular → `/drafts/llm-halusinasyon-tespiti-[YYYY-MM].md`
   - `$BUZSU_SITE_BASE_URL/uv-filtreli-tezgah-alti-su-aritma-cihazi-pompali-model/`
   - `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi/`
   - `$BUZSU_SITE_BASE_URL/atiksiz-su-aritma-cihazi/`
-  - `<BUZSU_FAQ_URL>` — SSS sayfası (gerçek path doğrulanmadı; ekle)
-  - `<BUZSU_CONTACT_URL>` — İletişim (gerçek path doğrulanmadı; ekle)
+  - `<BUZSU_FAQ_URL>` — SSS sayfası
+  - `$BUZSU_SITE_BASE_URL/iletisim/` — İletişim
 
 Taslak → `/drafts/llms-txt-v1.md`
 
@@ -51,7 +51,7 @@ Taslak → `/drafts/llms-txt-v1.md`
 Paragraf bağımsızlığı zayıf sayfaları belirle; öncelik sırası:
 1. `$BUZSU_SITE_BASE_URL/uv-filtreli-tezgah-alti-su-aritma-cihazi-pompali-model/` — ürün açıklama paragrafları
 2. `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi/`
-3. `<BUZSU_ABOUT_URL>` — Hakkımızda firma tanıtım paragrafları (gerçek path doğrulanmadı; ekle)
+3. `$BUZSU_SITE_BASE_URL/hakkimizda/` — Hakkımızda firma tanıtım paragrafları
 
 Her paragrafı bağlamından bağımsız oku; anlamsız olanları düzelt → content-agent.
 

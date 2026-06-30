@@ -26,8 +26,8 @@ Mevcut JSON-LD şemalarını tara. Doğrulanmış URL'ler:
 | Ürün — CODE cihaz | `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi/` | Product |
 | Ürün — atıksız cihaz | `$BUZSU_SITE_BASE_URL/atiksiz-su-aritma-cihazi/` | Product |
 | Filtre seti | `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi-5-li-filtre-seti-made-in-korea/` | Product |
-| SSS | `<BUZSU_FAQ_URL>` (doğrulanmadı — gerçek path'i ekle) | FAQPage |
-| İletişim / Hakkımızda | `<BUZSU_CONTACT_URL>` (doğrulanmadı — gerçek path'i ekle) | LocalBusiness |
+| SSS | `<BUZSU_FAQ_URL>` | FAQPage |
+| İletişim / Hakkımızda | `$BUZSU_SITE_BASE_URL/iletisim/` | LocalBusiness |
 
 ### 2. Şablon Seçimi
 `templates/jsonld-template.md` referans al.

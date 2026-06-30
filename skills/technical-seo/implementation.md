@@ -25,8 +25,8 @@ Sitemap'te bulunması gereken doğrulanmış URL'ler:
 - `$BUZSU_SITE_BASE_URL/atiksiz-su-aritma-cihazi/`
 - `$BUZSU_SITE_BASE_URL/code-su-aritma-cihazi-5-li-filtre-seti-made-in-korea/`
 - `$BUZSU_SITE_BASE_URL/tds-metre/`
-- `<BUZSU_FAQ_URL>` (doğrulanmadı — gerçek path'i ekle)
-- `<BUZSU_BLOG_URL>` (doğrulanmadı — gerçek path'i ekle)
+- `<BUZSU_FAQ_URL>`
+- `$BUZSU_SITE_BASE_URL/blog/`
 
 Canonical kontrol: her ürün sayfası kendi canonical URL'sini işaret ediyor mu?
 
