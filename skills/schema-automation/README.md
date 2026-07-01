@@ -6,7 +6,7 @@ doğrulaması ve bakımını yönet. Ürün, FAQ, BreadcrumbList ve HowTo şemal
 içerik güncellemelerine paralel güncel tutar.
 
 ## İlgili Agent
-`seo-agent`, `technical-agent`
+`seo-agent`, `schema-agent`
 
 ## Bu Skill ile skills/schema Farkı
 `skills/schema` → Schema.org kuralları, kavramlar, kullanım rehberi
@@ -15,7 +15,7 @@ içerik güncellemelerine paralel güncel tutar.
 ## Kapsam
 - JSON-LD şema üretim şablonları (Product, FAQ, HowTo, Article, BreadcrumbList, Organization)
 - Doğrulama pipeline'ı (Google Rich Results Test + schema.org validator)
-- CodeIgniter 4 view entegrasyonu planı
+- CodeIgniter 3.7.1 application/views/ entegrasyonu planı
 - GSC zenginleştirilmiş sonuç hata izleme
 
 ## İncelenen Kavram Kaynakları

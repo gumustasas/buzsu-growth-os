@@ -1,4 +1,4 @@
-# TASK-005 Raporu — CodeIgniter 4 Product Schema Entegrasyon Planı
+# TASK-005 Raporu — CodeIgniter 3.7.1 Product Schema Entegrasyon Planı
 
 **Tarih:** 2026-06-30  
 **Agent:** schema-agent  
@@ -6,11 +6,13 @@
 **Durum:** Taslak — İnsan onayı bekliyor  
 **Canlı deploy:** HAYIR — yalnızca plan ve taslak kod
 
+> **CI3.7.1'e Geçiş Notu:** Bu rapor önceki `ci4-product-schema-integration-plan.md` dosyasının yerini alır. Buzsu.com.tr'nin gerçek altyapısının CodeIgniter 4 değil **CodeIgniter 3.7.1** olduğu doğrulandığından, aşağıdaki tüm dosya yolları ve kod örnekleri CI3.7.1 klasör yapısına (`application/`) ve Loader/autoload API'sine göre güncellenmiştir. Controller/model sınıf adları yine de tahminidir; geliştirici gerçek kod tabanına göre doğrulamalıdır.
+
 ---
 
 ## 1. Yönetici Özeti
 
-Bu rapor, `buzsu.com.tr` CodeIgniter 4 altyapısına Product Schema JSON-LD eklenmesi için gereken dosya değişikliklerini, PHP taslak kodunu, branch stratejisini ve doğrulama listesini içerir.  
+Bu rapor, `buzsu.com.tr` CodeIgniter 3.7.1 altyapısına Product Schema JSON-LD eklenmesi için gereken dosya değişikliklerini, PHP taslak kodunu, branch stratejisini ve doğrulama listesini içerir.  
 **Airtable'da SKU, Image URL ve Schema Description alanları doldurulmadan PR merge edilmez.**  
 Branch `draft` olarak açılır; tüm koşullar sağlandıktan sonra `ready for review` yapılır.
 
@@ -30,23 +32,23 @@ Branch `draft` olarak açılır; tüm koşullar sağlandıktan sonra `ready for 
 
 ---
 
-## 3. Etkilenecek CI4 Dosyaları
+## 3. Etkilenecek CI3.7.1 Dosyaları
 
-Buzsu.com.tr'nin CI4 proje yapısına göre tahmini dosya yolları. Gerçek yollar insan tarafından doğrulanmalıdır.
+Buzsu.com.tr'nin CI3.7.1 proje yapısına göre tahmini dosya yolları. Gerçek yollar insan tarafından doğrulanmalıdır.
 
 ```
-app/
-├── Helpers/
+application/
+├── helpers/
 │   └── schema_helper.php          ← YENİ — product_schema() fonksiyonu
-├── Controllers/
+├── controllers/
 │   └── ProductController.php      ← MEVCUT — $data dizisine schema verisi eklenir
-├── Views/
+├── views/
 │   ├── products/
 │   │   └── detail.php             ← MEVCUT — <head> içine schema çıktısı eklenir
 │   └── layouts/
 │       └── main.php               ← MEVCUT — helper yükleme noktası (varsa)
-└── Config/
-    └── Autoload.php               ← MEVCUT — schema_helper autoload'a eklenir
+└── config/
+    └── autoload.php               ← MEVCUT — schema_helper autoload'a eklenir
 ```
 
 ---
@@ -55,7 +57,7 @@ app/
 
 ```php
 <?php
-// app/Helpers/schema_helper.php
+// application/helpers/schema_helper.php
 // Product Schema JSON-LD üretici — DRAFT, insan onayı gerekli
 
 if (! function_exists('product_schema')) {
@@ -129,8 +131,9 @@ if (! function_exists('product_schema')) {
 
 ```php
 // ProductController.php içinde show() veya detail() metoduna eklenti
+// (CI3.7.1: controller CI_Controller'dan extend eder, model $this->load->model() ile yüklenir)
 
-public function show(string $slug): string
+public function show($slug)
 {
     // ... mevcut kod ...
 
@@ -149,7 +152,8 @@ public function show(string $slug): string
         'category'    => $product['Category']         ?? '',
     ]);
 
-    return view('products/detail', $data);
+    // CI3.7.1: view() global fonksiyonu yok — $this->load->view() çıktıyı doğrudan echo eder
+    $this->load->view('products/detail', $data);
 }
 ```
 
@@ -158,7 +162,7 @@ public function show(string $slug): string
 ## 6. View Değişikliği Taslağı — `detail.php`
 
 ```php
-<!-- app/Views/products/detail.php -->
+<!-- application/views/products/detail.php -->
 <!-- <head> kapanış etiketinden ÖNCE — mevcut schema bloklarının ALTINA -->
 
 <?php if (! empty($product_schema_html)) : ?>
@@ -172,27 +176,23 @@ public function show(string $slug): string
 
 ---
 
-## 7. Autoload Değişikliği — `Config/Autoload.php`
+## 7. Autoload Değişikliği — `application/config/autoload.php`
 
 ```php
-// app/Config/Autoload.php — $helpers dizisine ekle
-public $helpers = [
-    'url',
-    'form',
-    'schema',   // ← EKLE
-];
+// application/config/autoload.php — $autoload['helper'] dizisine ekle
+$autoload['helper'] = ['url', 'form', 'schema']; // ← 'schema' EKLENDİ
 ```
 
 ---
 
-## 8. Airtable → CI4 Veri Akışı
+## 8. Airtable → CI3.7.1 Veri Akışı
 
 ```
 Airtable Products Tablosu (tbldogYQwAQr24UWE)
     │
-    │  API Key (env var) — CI4 backend okur, yazar değil
+    │  API Key (env var) — CI3.7.1 backend okur, yazar değil
     ▼
-CI4 Model (AirtableProductModel veya mevcut model)
+CI3.7.1 Model (Product_model veya mevcut model, $this->load->model() ile yüklenir)
     │  getBySlug($slug) → alan mapping
     ▼
 ProductController::show()
@@ -224,7 +224,7 @@ View (detail.php)
 ### Branch Adı
 
 ```
-feat/product-schema-ci4
+feat/product-schema-ci3
 ```
 
 ### Commit Sırası (Önerilen)
@@ -233,7 +233,7 @@ feat/product-schema-ci4
 feat: add schema_helper with product_schema() function
 feat: pass product schema data in ProductController
 feat: render product_schema_html in detail view head
-chore: autoload schema helper in CI4 config
+chore: autoload schema helper in CI3.7.1 config
 ```
 
 ### PR Başlığı
@@ -253,10 +253,10 @@ feat: add Product Schema JSON-LD to product detail pages
 ```markdown
 ## Değişiklikler
 
-- `app/Helpers/schema_helper.php` eklendi: product_schema() helper fonksiyonu
+- `application/helpers/schema_helper.php` eklendi: product_schema() helper fonksiyonu
 - `ProductController.php` güncellendi: schema verisi $data'ya eklendi
-- `Views/products/detail.php` güncellendi: <head> içine schema_html render edildi
-- `Config/Autoload.php` güncellendi: schema helper autoload'a eklendi
+- `application/views/products/detail.php` güncellendi: <head> içine schema_html render edildi
+- `application/config/autoload.php` güncellendi: schema helper autoload'a eklendi
 
 ## Schema Mimarisi
 
@@ -329,8 +329,8 @@ Rollback süre tahmini: 5 dakika, deploy gerekmez (PHP dosya değişikliği).
 |------|---------|---------|------------|
 | Airtable'da 3 alan oluştur ve doldur | P1 | İnsan | TASK-004 |
 | Bu planı gözden geçir ve onaylar | P1 | İnsan | Bu rapor |
-| `feat/product-schema-ci4` branch aç | P1 | Geliştirici / agent | İnsan onayı |
-| Taslak kodu CI4 projesiyle uyarla | P1 | Geliştirici | Branch |
+| `feat/product-schema-ci3` branch aç | P1 | Geliştirici / agent | İnsan onayı |
+| Taslak kodu CI3.7.1 projesiyle uyarla | P1 | Geliştirici | Branch |
 | Draft PR aç | P1 | Geliştirici / agent | Branch |
 | Rich Results Test uygula | P1 | Geliştirici | Staging deploy |
 | PR'ı `ready for review` yap | P2 | Geliştirici | Test geçildi |

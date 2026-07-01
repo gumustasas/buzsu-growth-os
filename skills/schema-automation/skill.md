@@ -19,4 +19,4 @@ description: BUZSU ürün ve içerik sayfaları için JSON-LD şemalarını üre
 6. **Fiyat doğruluğu** — Offers.price alanına yanlış fiyat yazmak hem hukuki hem SEO riskidir.
 
 ## Sınır
-Bu skill şema taslağı ve doğrulama raporu üretir. Canlı yayın technical-agent + insan onayı gerektirir.
+Bu skill şema taslağı ve doğrulama raporu üretir. Canlı yayın schema-agent + insan onayı gerektirir.

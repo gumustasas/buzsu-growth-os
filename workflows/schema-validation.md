@@ -15,7 +15,7 @@ JSON-LD şema değişikliklerini canlıya almadan önce doğrulama adımlarını
 3. **schema.org/validator** — validator.schema.org; @type ve property uyumluluğu
 4. **Doğrulama raporu** — /drafts/schema/validation-[slug]-[tarih].md kaydet
 5. **İnsan onayı** — Raporu sun; onay bekle
-6. **Entegrasyon** — Onay sonrası developer CI 4 view'a ekler
+6. **Entegrasyon** — Onay sonrası developer CI3.7.1 application/views/ dosyasına ekler
 7. **GSC takip** — 7 gün sonra Zenginleştirilmiş Sonuçlar kontrolü
 
 ## Sorumluluk

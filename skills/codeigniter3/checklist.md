@@ -1,8 +1,8 @@
-# CodeIgniter 4 — Platform Geliştirme — Kontrol Listesi
+# CodeIgniter 3.7.1 — Platform Geliştirme — Kontrol Listesi
 
 - [ ] Veritabanı sorguları Query Builder veya parametreli binding ile mi yazılmış (ham string concat yok)?
 - [ ] Formlarda CSRF token kontrolü aktif mi?
-- [ ] Kullanıcı girdisi (form/query param) Validation kütüphanesiyle doğrulanıyor mu?
+- [ ] Kullanıcı girdisi (form/query param) form_validation kütüphanesiyle doğrulanıyor mu?
 - [ ] Hassas bilgi (API anahtarı, token) .env dışında bir dosyada yer almıyor mu?
 - [ ] Hata raporlama (display_errors) production ortamında kapalı mı?
 - [ ] Route'lar gereksiz yere public değil, filtre/yetkilendirme katmanından geçiyor mu?

@@ -4,7 +4,7 @@
 
 ```
 BUZSU_SITE_BASE_URL      # https://www.buzsu.com.tr
-GSC_PROPERTY_URL         # GSC'de tanımlı property URL'i
+GSC_SITE_URL             # GSC'de tanımlı site URL'i
 AIRTABLE_BASE_ID         # Büyüme metriklerinin tutulduğu Airtable base ID'si
 N8N_WEBHOOK_GSC_REPORT   # Aylık GSC raporunu Airtable'a ileten n8n webhook URL'i
 ```

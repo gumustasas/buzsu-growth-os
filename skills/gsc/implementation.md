@@ -3,7 +3,7 @@
 ## Gerekli Yapılandırma Değişkenleri
 
 ```
-GSC_PROPERTY_URL         # GSC'de tanımlı property URL'i — https://www.buzsu.com.tr
+GSC_SITE_URL             # GSC'de tanımlı site URL'i — https://www.buzsu.com.tr/
 AIRTABLE_BASE_ID         # Raporların kaydedileceği Airtable base ID'si
 ```
 
@@ -20,7 +20,7 @@ Bu skill yalnızca okuma yapar.
 - Trend analizi → son 90 gün
 
 ### 2. Performans Verisi Çek
-`$GSC_PROPERTY_URL` için tıklama / izlenim / CTR / ort. pozisyon.
+`$GSC_SITE_URL` için tıklama / izlenim / CTR / ort. pozisyon.
 Cihaz bazlı (mobil öncelikli).
 
 İzlenecek anahtar sorgular:
@@ -32,13 +32,13 @@ Cihaz bazlı (mobil öncelikli).
 - "Buzsu" (marka araması)
 
 ### 3. Kapsam Raporu
-`$GSC_PROPERTY_URL` → Kapsam:
+`$GSC_SITE_URL` → Kapsam:
 - "Dizine alındı" sayısı bu ay vs geçen ay
 - Hata türleri: 4xx, noindex, redirect hatası
 - Doğrulanmış ürün URL'leri dizinde mi? (su-aritma-cihazlari, code-su-aritma, atiksiz, tezgah-alti)
 
 ### 4. Zenginleştirilmiş Sonuç Kontrolü
-`$GSC_PROPERTY_URL` → Zenginleştirilmiş Sonuçlar:
+`$GSC_SITE_URL` → Zenginleştirilmiş Sonuçlar:
 - Product şemaları aktif mi? (ürün sayfaları)
 - FAQPage aktif mi? (`<BUZSU_FAQ_URL>` — doğrulandıktan sonra kontrol et)
 - Hata sayısı artıyor mu?

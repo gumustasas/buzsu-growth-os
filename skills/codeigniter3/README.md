@@ -1,8 +1,8 @@
-# CodeIgniter 4 — Platform Geliştirme
+# CodeIgniter 3.7.1 — Platform Geliştirme
 
 ## Amaç
 
-Buzsu.com.tr'nin (gumustasas/buzsu prototipi) CodeIgniter 4 tabanlı kod tabanında güvenli ve sürdürülebilir geliştirme pratikleri.
+Buzsu.com.tr'nin (gumustasas/buzsu prototipi) CI3.7.1 tabanlı kod tabanında güvenli ve sürdürülebilir geliştirme pratikleri.
 
 ## İlgili Agent
 
@@ -10,7 +10,7 @@ Yok — kod değişikliği önerileri otomatik olarak ilgili alan agent'ı (cro-
 
 ## İncelenen Dış Kaynaklar
 
-- **Kaynak repo bulunamadı** — İncelenen 18 repo listesinde CodeIgniter4'e özel bir kaynak yoktu. Bu modülün içeriği genel CodeIgniter 4 resmi dokümantasyon pratiği ve addyosmani/agent-skills'teki 'framework best practices' prensibinin (incremental, test-first, framework idiyomlarına sadık kalma) genel uyarlamasıdır — kör kopyalama yapılmadı.
+- **Kaynak repo bulunamadı** — İncelenen 18 repo listesinde CodeIgniter3.7.1'e özel bir kaynak yoktu. Bu modülün içeriği genel CodeIgniter 3 resmi dokümantasyon pratiği ve addyosmani/agent-skills'teki 'framework best practices' prensibinin (incremental, test-first, framework idiyomlarına sadık kalma) genel uyarlamasıdır — kör kopyalama yapılmadı.
 
 > Kör kopyalama yapılmadı; yalnızca BUZSU bağlamına uyarlanabilir pratik/desen çıkarıldı. Detaylı atıf için bkz. kök dizindeki `reports/external-repo-integration-report.md`.
 

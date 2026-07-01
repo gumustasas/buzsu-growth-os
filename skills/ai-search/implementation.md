@@ -4,7 +4,7 @@
 
 ```
 BUZSU_SITE_BASE_URL      # https://www.buzsu.com.tr
-GSC_PROPERTY_URL         # GSC'de tanımlı property URL'i
+GSC_SITE_URL             # GSC'de tanımlı site URL'i
 ```
 
 Değişken değerleri `config/.env.example` dosyasından alınır. Gerçek değerler
@@ -15,7 +15,7 @@ environment variable olarak saklanır; repoya yazılmaz.
 ## Adımlar
 
 ### 1. Mevcut Durum Analizi
-- GSC'de `$GSC_PROPERTY_URL` için AI Overview izlenimlerini kontrol et
+- GSC'de `$GSC_SITE_URL` için AI Overview izlenimlerini kontrol et
   (Performans → Arama türü: Web → Filtre: AI Overview)
 - Hangi sorgularda AI Overview çıkıyor? Varsa kaydet.
 

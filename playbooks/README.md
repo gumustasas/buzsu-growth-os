@@ -9,5 +9,5 @@ hangi adımda insan onayı gerektiğini belirtir.
 - `yeni-urun-sayfasi-launch.md` — schema + seo + cro + ui-ux
 - `aylik-geo-audit.md` — geo + aeo-ai-search + entity-seo + content
 - `n8n-otomasyon-kurulum.md` — n8n + mcp + github
-- `guvenlik-denetimi.md` — security + php + codeigniter4
+- `guvenlik-denetimi.md` — security + php + codeigniter3
 - `whatsapp-satis-optimizasyonu.md` — cro + ecommerce + content

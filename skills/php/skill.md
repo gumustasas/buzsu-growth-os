@@ -7,11 +7,11 @@ description: Buzsu/Suvesu PHP kod tabanında OWASP Top 10 sınıfı zafiyetlerde
 
 ## Ne Zaman Devreye Girer
 
-Kullanıcı bu alanla ilgili bir görev tanımladığında (örn. "php ile ilgili ...") veya ilgili agent (Yok — skills/security/ ve skills/codeigniter4/ ile birlikte kullanılır.) kendi alanı dışında bir ihtiyaç tespit edip bu skill'e referans verdiğinde.
+Kullanıcı bu alanla ilgili bir görev tanımladığında (örn. "php ile ilgili ...") veya ilgili agent (Yok — skills/security/ ve skills/codeigniter3/ ile birlikte kullanılır.) kendi alanı dışında bir ihtiyaç tespit edip bu skill'e referans verdiğinde.
 
 ## Temel Pratikler
 
-- Output escaping: kullanıcı girdisi HTML'e basılmadan önce htmlspecialchars/CI4 esc() ile kaçırılır
+- Output escaping: kullanıcı girdisi HTML'e basılmadan önce htmlspecialchars() ile kaçırılır
 - Prepared statement / parametreli sorgu zorunluluğu
 - Dosya yükleme noktalarında MIME tipi ve uzantı çift kontrolü
 - Bağımlılık güncelliği: composer audit ile bilinen zafiyet taraması (uygulama insan onayıyla)

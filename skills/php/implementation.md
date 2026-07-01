@@ -12,6 +12,6 @@ Güvenlik düzeltmeleri her zaman branch+PR; kritik/acil bulgular insana hemen r
 
 ## İlgili Dosyalar
 
-- İlgili agent tanımı: `Yok — skills/security/ ve skills/codeigniter4/ ile birlikte kullanılır.`
+- İlgili agent tanımı: `Yok — skills/security/ ve skills/codeigniter3/ ile birlikte kullanılır.`
 - Bu modülün kontrol listesi: `skills/php/checklist.md`
 - Örnek promptlar: `skills/php/prompts.md`

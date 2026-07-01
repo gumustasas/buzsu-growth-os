@@ -10,7 +10,7 @@ agents/commerce-agent.md (mevcut)
 
 ## İncelenen Dış Kaynaklar
 
-- **ComposioHQ/awesome-claude-skills** — Shopify Automation skill deseni: ürün/sipariş/müşteri/envanter yönetimi iş akışı yapısı — Buzsu'nun kendi e-ticaret altyapısına (Shopify değil, özel CI4) kavramsal olarak uyarlandı, kod kopyalanmadı.
+- **ComposioHQ/awesome-claude-skills** — Shopify Automation skill deseni: ürün/sipariş/müşteri/envanter yönetimi iş akışı yapısı — Buzsu'nun kendi e-ticaret altyapısına (Shopify değil, özel CI3.7.1) kavramsal olarak uyarlandı, kod kopyalanmadı.
 - **nextlevelbuilder/ui-ux-pro-max-skill** — Ürün-tipi eşleştirme matrisi (lüks vs. bütçe, kategori bazlı tasarım kuralı) — Buzsu'da TDS değeri → ürün segmenti eşleştirmesine kavramsal temel oluşturdu.
 
 > Kör kopyalama yapılmadı; yalnızca BUZSU bağlamına uyarlanabilir pratik/desen çıkarıldı. Detaylı atıf için bkz. kök dizindeki `reports/external-repo-integration-report.md`.

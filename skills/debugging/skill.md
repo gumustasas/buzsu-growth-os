@@ -1,6 +1,6 @@
 ---
 name: debugging
-description: CI4 backend ve Next.js frontend hatalarını yeniden üret → izole et → çöz adımlarıyla sistematik ayıklama.
+description: CI3.7.1 backend ve Next.js frontend hatalarını yeniden üret → izole et → çöz adımlarıyla sistematik ayıklama.
 ---
 
 # Debugging

@@ -312,15 +312,15 @@
 
 ---
 
-## 4. CodeIgniter 4 — Dosya Bazlı Uygulama Önerileri
+## 4. CodeIgniter 3.7.1 — Dosya Bazlı Uygulama Önerileri
 
 > Bu öneriler developer için hazırlanmıştır. Hiçbiri Claude Code tarafından doğrudan uygulanmaz;
-> onay sonrası developer tarafından ilgili CI4 view dosyalarına eklenir.
+> onay sonrası developer tarafından ilgili CI3.7.1 application/views/ dosyalarına eklenir.
 
 ### 4.1 Site Geneli (Organization + WebSite)
 
 ```
-app/Views/layouts/main.php  (veya base.php / header.php)
+application/views/layouts/main.php  (veya base.php / header.php)
 ```
 
 `<head>` içine, `</head>` kapanmadan önce:
@@ -332,15 +332,15 @@ app/Views/layouts/main.php  (veya base.php / header.php)
 <?php endif; ?>
 ```
 
-`app/Views/partials/schema/organization.php` → `organization-buzsu.jsonld` içeriğini PHP değişkenleriyle besle.
+`application/views/partials/schema/organization.php` → `organization-buzsu.jsonld` içeriğini PHP değişkenleriyle besle.
 
 ---
 
 ### 4.2 Kategori Sayfaları (ItemList)
 
 ```
-app/Views/categories/list.php
-app/Views/categories/category_view.php  (adı farklı olabilir)
+application/views/categories/list.php
+application/views/categories/category_view.php  (adı farklı olabilir)
 ```
 
 Yaklaşım:
@@ -363,8 +363,8 @@ Etkilenen sayfalar:
 ### 4.3 Rehber / Blog Sayfası (Article + FAQPage)
 
 ```
-app/Views/blog/post.php
-app/Views/pages/guide.php  (adı farklı olabilir)
+application/views/blog/post.php
+application/views/pages/guide.php  (adı farklı olabilir)
 ```
 
 Etkilenen sayfa: `/en-iyi-su-aritma-cihazi-hangisi/`
@@ -376,7 +376,7 @@ Eklenecek schema blokları:
 
 Önerilen partial yapısı:
 ```
-app/Views/partials/schema/
+application/views/partials/schema/
   ├── organization.php
   ├── article.php          ← yeni
   ├── faq.php              ← yeni
@@ -390,8 +390,8 @@ app/Views/partials/schema/
 ### 4.4 Ürün Detay Sayfası (Product + HowTo + FAQPage)
 
 ```
-app/Views/products/detail.php
-app/Views/pages/manyetik.php  (özel sayfa olabilir)
+application/views/products/detail.php
+application/views/pages/manyetik.php  (özel sayfa olabilir)
 ```
 
 Etkilenen sayfa: `/manyetik-kirec-onleyici/`
@@ -425,7 +425,7 @@ $schema = [
 ### 4.5 BreadcrumbList — Tüm Sayfalar (Merkezi Partial)
 
 ```
-app/Views/partials/schema/breadcrumb.php
+application/views/partials/schema/breadcrumb.php
 ```
 
 Bu partial tüm view'lardan çağrılabilir, `$breadcrumbs` array'i controller'dan paslanır:

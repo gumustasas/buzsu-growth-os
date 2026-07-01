@@ -6,7 +6,7 @@ Buzsu/Suvesu PHP kod tabanında OWASP Top 10 sınıfı zafiyetlerden korunma ve 
 
 ## İlgili Agent
 
-Yok — skills/security/ ve skills/codeigniter4/ ile birlikte kullanılır.
+Yok — skills/security/ ve skills/codeigniter3/ ile birlikte kullanılır.
 
 ## İncelenen Dış Kaynaklar
 

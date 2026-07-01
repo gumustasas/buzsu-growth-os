@@ -180,17 +180,17 @@ Airtable `Image URL` alanı şu an **tüm ürünler için boş**. Doldurma adım
 
 ## 8. Product Schema PR Blocker
 
-> **UYARI:** Aşağıdaki koşullar sağlanmadan `feat/product-schema-ci4` branch'i açılmaz ve PR oluşturulmaz.
+> **UYARI:** Aşağıdaki koşullar sağlanmadan `feat/product-schema-ci3` branch'i açılmaz ve PR oluşturulmaz.
 
 | Koşul | Durum | Sorumlu |
-|-------|-------|---------|
+|-------|-------|----------|
 | `SKU` alanı 5 ürün için dolu | ❌ | İnsan |
 | `Image URL` alanı 5 ürün için dolu | ❌ | İnsan |
 | `Schema Description` alanı 5 ürün için onaylı | ❌ | İnsan |
 | Airtable alanları oluşturuldu | ❌ | İnsan |
 | JSON-LD şablonları TASK-003'te insan tarafından review edildi | ❌ | İnsan |
 
-Tüm koşullar ✅ olduğunda TASK-005 başlatılabilir: CodeIgniter 4 view dosyalarına entegrasyon branch'i.
+Tüm koşullar ✅ olduğunda TASK-005 başlatılabilir: CI3.7.1 application/views/ entegrasyon branch'i.
 
 ---
 
@@ -202,7 +202,7 @@ Tüm koşullar ✅ olduğunda TASK-005 başlatılabilir: CodeIgniter 4 view dosy
 | Bölüm 5'teki Schema Description taslakları gözden geçir ve onayla | P1 | İnsan | ❌ Bekliyor |
 | Her ürün sayfasından Image URL'yi al ve Airtable'a gir | P1 | İnsan | ❌ Bekliyor |
 | SKU değerlerini onayla veya iç kodlamaya göre güncelle | P2 | İnsan | ❌ Bekliyor |
-| TASK-005: Alanlar dolduktan sonra CI4 entegrasyon branch aç | P1 | schema-agent | ⏳ Blocked |
+| TASK-005: Alanlar dolduktan sonra CI3.7.1 entegrasyon branch aç | P1 | schema-agent | ⏳ Blocked |
 
 ---
 

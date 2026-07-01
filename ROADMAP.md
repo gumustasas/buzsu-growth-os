@@ -167,7 +167,7 @@
 
 ### Faz 4 Schema — TASK-006 Product Schema Entegrasyonu ⏸️ Blocked
 **Blocker:** Airtable'da SKU, Image URL ve Schema Description alanları henüz doldurulmadı.  
-**Sonraki adım:** Bu alanlar dolduğunda `feat/product-schema-ci4` branch açılır (TASK-005 planı hazır).  
+**Sonraki adım:** Bu alanlar dolduğunda `feat/product-schema-ci3` branch açılır (TASK-005 planı hazır).  
 **Bağımlılık:** TASK-004 (Airtable alan tanımı) → insan onayı bekliyor.
 
 ---

@@ -33,7 +33,7 @@ function getSchemaOverview(): SchemaOverviewData {
     productSchemaPresent: false,
     blockers: [
       'Airtable: SKU + Image URL + Schema Description doldurulmalı',
-      'TASK-006 CI4 entegrasyonu insan onayı bekliyor',
+      'TASK-006 CI3.7.1 entegrasyonu insan onayı bekliyor',
     ],
     source: 'mock',
     lastUpdated: new Date().toISOString(),
@@ -47,10 +47,8 @@ function getTasksOverview(): TasksOverviewData {
     { id: 'TASK-001', title: 'SERP + HTML analizi', area: 'seo', status: 'partial' },
     { id: 'TASK-003', title: 'Product Schema mimarisi', area: 'schema', status: 'done' },
     { id: 'TASK-004', title: 'Airtable alan tanımı', area: 'schema', status: 'done' },
-    { id: 'TASK-005', title: 'CI4 entegrasyon planı', area: 'schema', status: 'done' },
-    { id: 'TASK-006', title: 'CI4 Product Schema deploy', area: 'schema', status: 'blocked', blockedBy: 'Airtable alanları' },
+    { id: 'TASK-005', title: 'CI3.7.1 entegrasyon planı', area: 'schema', status: 'done' },
     { id: 'SPRINT-002', title: 'Dashboard + KG temeli', area: 'platform', status: 'done' },
-    { id: 'SPRINT-003', title: 'Live Data Foundation', area: 'platform', status: 'active' },
   ]
   return {
     tasks,

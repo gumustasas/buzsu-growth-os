@@ -5,7 +5,7 @@ Buzsu.com.tr ve Suvesu.com'un teknik SEO altyapısını güçlendir:
 taranabilirlik, indekslenebilirlik, site hızı ve Core Web Vitals.
 
 ## İlgili Agent
-`seo-agent`, `technical-agent`
+`seo-agent`, `schema-agent`
 
 ## Kapsam
 - Crawl bütçesi optimizasyonu (robots.txt, sitemap, canonical)

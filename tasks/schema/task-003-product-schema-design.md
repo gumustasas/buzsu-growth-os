@@ -36,7 +36,7 @@ Mevcut schema altyapısıyla çakışmadan, Google Rich Results Test'i geçecek,
 3. [x] Her ürün için gerekli alanları listele
 4. [x] Airtable'dan hangi bilgilerin alınabileceğini belirt
 5. [x] JSON-LD örnekleri üret
-6. [x] CodeIgniter 4 entegrasyon planı hazırla
+6. [x] CodeIgniter 3.7.1 entegrasyon planı hazırla
 7. [x] Mevcut Organization, FAQPage, BreadcrumbList ile çakışma kontrolü
 8. [x] Risk analizi
 9. [x] PR öncesi doğrulama listesi
@@ -62,7 +62,7 @@ Mevcut schema altyapısıyla çakışmadan, Google Rich Results Test'i geçecek,
 
 - Airtable Products tablosuna `SKU`, `Image URL`, `Description` alanları eklenmesi
 - Her ürün sayfasının HTML kaynağının alınması (TASK-002 kapsamında uzatılabilir)
-- Product JSON-LD'nin CodeIgniter 4 view dosyalarına entegrasyon branch'i açılması
+- CI3.7.1 application/views/ entegrasyon branch'i açılması
 
 ---
 
@@ -81,7 +81,7 @@ Mevcut schema altyapısıyla çakışmadan, Google Rich Results Test'i geçecek,
   "open_items": [
     "Airtable'a SKU, Image URL, Description alanları eklenmeli",
     "Ürün sayfaları HTML kaynakları alınmalı (TASK-004 önerisi)",
-    "İnsan onayı sonrası CodeIgniter 4 entegrasyon branch açılacak"
+    "CI3.7.1 entegrasyon branch açılacak"
   ]
 }
 ```

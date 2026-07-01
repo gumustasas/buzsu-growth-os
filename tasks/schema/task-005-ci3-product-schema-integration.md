@@ -1,4 +1,4 @@
-# TASK-005 — CodeIgniter 4 Product Schema Entegrasyon Planı
+# TASK-005 — CodeIgniter 3.7.1 Product Schema Entegrasyon Planı
 
 **Tarih:** 2026-06-30  
 **Faz:** Faz 4 — Buzsu SEO/GEO/CRO İlk Canlı Uygulama  
@@ -6,13 +6,13 @@
 **Öncelik:** P1  
 **Atanan agent:** schema-agent  
 **Bağımlı görev:** TASK-003 (schema mimarisi), TASK-004 (Airtable alanları)  
-**Çıktı:** `outputs/reports/ci4-product-schema-integration-plan.md`
+**Çıktı:** `outputs/reports/ci3-product-schema-integration-plan.md`
 
 ---
 
 ## Amaç
 
-Buzsu.com.tr CodeIgniter 4 altyapısına Product Schema JSON-LD'yi entegre edecek feature branch planını hazırlamak.  
+Buzsu.com.tr CodeIgniter 3.7.1 altyapısına Product Schema JSON-LD'yi entegre edecek feature branch planını hazırlamak.  
 **Canlı siteye otomatik deploy yapılmaz.** Bu görev yalnızca plan, taslak dosyalar ve PR branch stratejisi üretir.
 
 ---
@@ -33,10 +33,10 @@ Buzsu.com.tr CodeIgniter 4 altyapısına Product Schema JSON-LD'yi entegre edece
 
 ## Kapsam
 
-1. [x] Etkilenecek CI4 dosyaları belirlendi
+1. [x] Etkilenecek CI3.7.1 dosyaları belirlendi
 2. [x] PHP product_schema() helper taslağı üretildi
 3. [x] View entegrasyon noktaları belirlendi
-4. [x] Airtable → CI4 veri akışı planlandı
+4. [x] Airtable → CI3.7.1 veri akışı planlandı
 5. [x] Branch ve PR stratejisi hazırlandı
 6. [x] Test ve doğrulama listesi hazırlandı
 7. [x] Rollback planı eklendi
@@ -47,20 +47,20 @@ Buzsu.com.tr CodeIgniter 4 altyapısına Product Schema JSON-LD'yi entegre edece
 
 - Canlı siteye otomatik değişiklik yapılmaz.
 - Tüm kod taslak (draft) — insan code review ve onayı gerekli.
-- Airtable'dan okuma (yazma değil) CI4 backend tarafında yapılır.
+- Airtable'dan okuma (yazma değil) CI3.7.1 backend tarafında yapılır.
 - PR `draft` olarak açılır; Airtable alanları dolmadan `ready for review` işaretlenmez.
 
 ---
 
 ## Çıktı Dosyası
 
-`outputs/reports/ci4-product-schema-integration-plan.md`
+`outputs/reports/ci3-product-schema-integration-plan.md`
 
 ---
 
 ## Sonraki Adım (TASK-006 önerisi)
 
-- Airtable alanları dolduktan sonra `feat/product-schema-ci4` branch'inin açılması
+- Airtable alanları dolduktan sonra `feat/product-schema-ci3` branch'inin açılması
 - Draft PR oluşturulması ve Google Rich Results Test ile doğrulanması
 - Kategori sayfasındaki duplicate BreadcrumbList kaldırma (ayrı PR)
 
@@ -72,10 +72,10 @@ Buzsu.com.tr CodeIgniter 4 altyapısına Product Schema JSON-LD'yi entegre edece
 {
   "status": "completed",
   "agent": "schema-agent",
-  "task": "TASK-005 — CodeIgniter 4 Product Schema Entegrasyon Planı",
+  "task": "TASK-005 — CodeIgniter 3.7.1 Product Schema Entegrasyon Planı",
   "date": "2026-06-30",
   "outputs": [
-    "outputs/reports/ci4-product-schema-integration-plan.md"
+    "outputs/reports/ci3-product-schema-integration-plan.md"
   ],
   "requires_review": true,
   "open_items": [

@@ -40,7 +40,7 @@
 
 | Görev | Neden Bekliyor |
 |-------|----------------|
-| TASK-006 — CI4 Product Schema Entegrasyonu | Airtable blocker: SKU + Image URL + Schema Description doldurulmalı |
+| TASK-006 — CI3.7.1 Product Schema Entegrasyonu | Airtable blocker: SKU + Image URL + Schema Description doldurulmalı |
 | Product Schema PR açılması | TASK-006 bekleniyor |
 | Duplicate BreadcrumbList kaldırma | Ayrı PR — Sprint-3'e alındı |
 
@@ -118,7 +118,7 @@ knowledge-graph/
   ],
   "requires_review": true,
   "open_items": [
-    "TASK-006: CI4 Product Schema — Airtable blocker çözülmeli",
+    "TASK-006: CI3.7.1 Product Schema — Airtable blocker çözülmeli",
     "Dashboard: Airtable live connector (Sprint-3)",
     "KG: 140+ entity eklenmeli (Sprint-3)"
   ]

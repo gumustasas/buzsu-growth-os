@@ -5,7 +5,7 @@ Buzsu.com.tr ve Suvesu.com'un büyük dil modelleri tarafından doğru şekilde
 indekslenmesi ve alıntılanması için içerik yapısını ve robot direktiflerini optimize et.
 
 ## İlgili Agent
-`seo-agent`, `technical-agent`
+`seo-agent`, `schema-agent`
 
 ## Kapsam
 - llms.txt protokolü (site kökü AI yönlendirme dosyası)

@@ -206,7 +206,7 @@ WhatsApp satış kanalı, Airtable CRM, küçük ölçekli e-ticaret) göre önc
 8. **Security** (`skills/security/`) — Aylık denetim; `playbooks/guvenlik-denetimi.md`.
 9. **Content, UI/UX, Images, Video** — Büyüme ivmesi arttıkça içerik üretim kapasitesini
    desteklemek için devreye girer.
-10. **Memory, MCP, GitHub, Vercel, PHP, CodeIgniter4** — Platform kararlıyken optimizasyon için;
+10. **Memory, MCP, GitHub, Vercel, PHP, CodeIgniter3.7.1** — Platform kararlıyken optimizasyon için;
     sistem kırılganlığı tespit edilirse öne alınabilir.
 
 ---
@@ -226,7 +226,7 @@ WhatsApp satış kanalı, Airtable CRM, küçük ölçekli e-ticaret) göre önc
 
 - [ ] **Yeni agent değerlendirmesi** (MINOR, onay gerekli):
   - `aeo-agent` — AEO/AI Search için (`skills/aeo-ai-search/` var, agent yok).
-  - `platform-agent` — CI4/PHP/Vercel kod denetimi için.
+  - `platform-agent` — CI3.7.1/PHP/Vercel kod denetimi için.
   - `security-agent` — Aylık güvenlik taraması için.
   - `ui-ux-agent` — UI/UX değerlendirme için.
   - `memory-agent` — Oturumlar arası bağlam yönetimi için.
@@ -258,7 +258,7 @@ etkisi yoktur.*
 ### İncelenen Repolar
 
 | # | Repo | Analiz Yöntemi | Lisans | Kullanım Durumu |
-|---|------|----------------|--------|-----------------|
+|---|------|----------------|--------|----------------|
 | 1 | `vercel-labs/skills` | README (main) | **Bulunamadı** | Kısmen kullanıldı |
 | 2 | `multica-ai/andrej-karpathy-skills` | README (main) | **Bulunamadı** | Kullanıldı |
 | 3 | `browser-use/video-use` | README (main) | MIT | Kullanıldı |
@@ -292,7 +292,7 @@ etkisi yoktur.*
   `skills/refactoring/` (5 dosya), `skills/planning/` (5 dosya).
 - **Geliştirilen skill**: Bu 4 modül Wave 1'de yoktu; tamamen yeni.
 - **Alınmayanlar**: Herhangi bir metin/kod/prompt birebir kopyalanmadı. Repo metninden
-  yalnızca kavramsal çerçeve (4 prensip) uyarlandı; BUZSU bağlamına (CI4, Next.js,
+  yalnızca kavramsal çerçeve (4 prensip) uyarlandı; BUZSU bağlamına (CI3.7.1, Next.js,
   Airtable) tamamen yeniden yazıldı.
 - **Lisans değerlendirmesi**: LICENSE dosyası bulunamadı. Kavramsal çerçeve
   (fikir/prensip) telif hakkıyla korunmaz; bunun ötesinde hiçbir ifade kopyalanmadı.

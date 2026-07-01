@@ -4,7 +4,7 @@
 
 ```
 BUZSU_SITE_BASE_URL      # https://www.buzsu.com.tr
-GSC_PROPERTY_URL         # GSC'de tanımlı property URL'i
+GSC_SITE_URL             # GSC'de tanımlı site URL'i
 ```
 
 Değerler `config/.env.example` dosyasından alınır; repoya yazılmaz.
@@ -43,7 +43,7 @@ Hedefler (mobil):
 - CLS < 0.1 → Banner/slider kaymaları
 
 ### 3. GSC Kapsam Raporu
-`$GSC_PROPERTY_URL` → Kapsam → Son 28 gün:
+`$GSC_SITE_URL` → Kapsam → Son 28 gün:
 - Toplam dizine alınan sayfa
 - "Dizine alınmadı - tarandı" artıyor mu?
 - Doğrulanmış ürün URL'leri dizinde mi?
@@ -69,7 +69,7 @@ Onaylanan değişiklikler developer tarafından uygulanır.
 Sunucu tarafı değişiklikler MAJOR sınıf.
 
 ### 8. İzleme (2 hafta sonra)
-- `$GSC_PROPERTY_URL` kapsam → dizine alınan sayfa değişti mi?
+- `$GSC_SITE_URL` kapsam → dizine alınan sayfa değişti mi?
 - PageSpeed Insights → CWV iyileşti mi?
 
 ## Onay Notu

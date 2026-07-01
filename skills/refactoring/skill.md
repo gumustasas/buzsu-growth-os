@@ -17,7 +17,7 @@ description: Davranış değiştirmeden, yalnızca görev kapsamında yapısal i
 - **Davranış değişmemeli** — refactoring sonrası fonksiyon aynı girdi → aynı çıktı üretiyor mu?
 - **Soyutlama eşiği: üçten önce değil** — 2 benzer kod bloğu soyutlanmaz; 3+ olunca değerlendir.
 - **Mevcut test/doğrulama korunur** — var olan doğrulama mekanizması çıkarılmaz.
-- **CI4 + Next.js konvansiyonu korunur** — framework'ün kendi stilinden sapılmaz.
+- **CI3.7.1 + Next.js konvansiyonu korunur** — framework'ün kendi stilinden sapılmaz.
 
 ## Sınır
 

@@ -1,13 +1,13 @@
 # Playbook: Güvenlik Denetimi
 
-İlgili skill'ler: `skills/security/`, `skills/php/`, `skills/codeigniter4/`
+İlgili skill'ler: `skills/security/`, `skills/php/`, `skills/codeigniter3/`
 
 ## Adımlar
 
 1. **Secret taraması** (`skills/security/`) — repo içinde `secrets`, `credentials`, `token`,
    `password` içeren dosya adı/içeriği taraması (CLAUDE.md güvenlik kuralı).
-2. **Girdi doğrulama denetimi** (`skills/php/`, `skills/codeigniter4/`) — Query Builder
-   kullanımı, CSRF filtresi, Validation kütüphanesi kontrolü.
+2. **Girdi doğrulama denetimi** (`skills/php/`, `skills/codeigniter3/`) — Query Builder
+   kullanımı, CSRF filtresi, form_validation kütüphanesi kontrolü.
 3. **Bağımlılık denetimi** — composer/npm bağımlılıklarında bilinen güvenlik açığı taraması
    (yalnızca rapor; yeni paket eklenmesi ayrı MAJOR karardır).
 4. **PII kontrolü** — draft/output dosyalarında müşteri telefon/isim verisi olup olmadığı

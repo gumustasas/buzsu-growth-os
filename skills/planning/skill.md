@@ -7,7 +7,7 @@ description: Belirsiz veya çok adımlı BUZSU görevlerini doğrulanabilir alt 
 
 ## Ne Zaman Devreye Girer
 
-- Görev 3+ farklı sistemle (CI4, Next.js, Airtable, n8n) etkileşim içerdiğinde.
+- Görev 3+ farklı sistemle (CI3.7.1, Next.js, Airtable, n8n) etkileşim içerdiğinde.
 - "Nasıl yapmalıyım?", "ne yapmalıyım?", "nereden başlamalıyım?" içeren her görevde.
 - Tahmin süresi belirsiz veya birden fazla yaklaşım mümkün olduğunda.
 - Herhangi bir MAJOR değişiklikten önce.
