@@ -5,7 +5,7 @@
 ```
 BUZSU_SITE_BASE_URL             # https://www.buzsu.com.tr
 N8N_WEBHOOK_SCHEMA_VALIDATION   # Schema doğrulama raporunu alan n8n webhook URL'i
-GSC_PROPERTY_URL                # GSC'de tanımlı property URL'i
+GSC_SITE_URL                    # GSC'de tanımlı site URL'i
 ```
 
 Değerler `config/.env.example` dosyasından alınır; repoya yazılmaz.
@@ -55,7 +55,7 @@ Her taslak için:
 Sonuç → `/drafts/schema/validation-[slug]-[YYYY-MM-DD].md`
 
 ### 5. GSC Baseline
-`$GSC_PROPERTY_URL` → Zenginleştirilmiş Sonuçlar → şema öncesi hata sayısını kaydet.
+`$GSC_SITE_URL` → Zenginleştirilmiş Sonuçlar → şema öncesi hata sayısını kaydet.
 
 ### 6. Onay
 Tüm `/drafts/schema/` taslakları insan onayına sunulur.
@@ -65,7 +65,7 @@ Onaylanan şemalar CodeIgniter 3.7.1 application/views/ dizinine eklenir (develo
 Commit örneği: `feat: uv-filtreli-tezgah-alti ürün sayfasına JSON-LD Product şeması eklendi`
 
 ### 8. Takip
-7 gün sonra `$GSC_PROPERTY_URL` → Zenginleştirilmiş Sonuçlar hata sayısını ölç.
+7 gün sonra `$GSC_SITE_URL` → Zenginleştirilmiş Sonuçlar hata sayısını ölç.
 
 ## Onay Notu
 Adım 7 canlı site değişikliğidir. MINOR sınıf, onay zorunlu.

@@ -6,7 +6,7 @@ doğrulaması ve bakımını yönet. Ürün, FAQ, BreadcrumbList ve HowTo şemal
 içerik güncellemelerine paralel güncel tutar.
 
 ## İlgili Agent
-`seo-agent`, `technical-agent`
+`seo-agent`, `schema-agent`
 
 ## Bu Skill ile skills/schema Farkı
 `skills/schema` → Schema.org kuralları, kavramlar, kullanım rehberi

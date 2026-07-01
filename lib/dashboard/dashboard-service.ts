@@ -48,9 +48,7 @@ function getTasksOverview(): TasksOverviewData {
     { id: 'TASK-003', title: 'Product Schema mimarisi', area: 'schema', status: 'done' },
     { id: 'TASK-004', title: 'Airtable alan tanımı', area: 'schema', status: 'done' },
     { id: 'TASK-005', title: 'CI3.7.1 entegrasyon planı', area: 'schema', status: 'done' },
-    { id: 'TASK-006', title: 'CI3.7.1 Product Schema deploy', area: 'schema', status: 'blocked', blockedBy: 'Airtable alanları' },
     { id: 'SPRINT-002', title: 'Dashboard + KG temeli', area: 'platform', status: 'done' },
-    { id: 'SPRINT-003', title: 'Live Data Foundation', area: 'platform', status: 'active' },
   ]
   return {
     tasks,
