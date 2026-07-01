@@ -132,7 +132,7 @@ Her ürün sayfasına eklenecek `Product` JSON-LD bloğu için zorunlu ve öneri
 ## 4. Airtable'dan Alınabilecek Bilgiler
 
 | Schema Alanı | Airtable Karşılığı | Alan ID | Doğrudan Kullanım |
-|-------------|-------------------|---------|-----------------|
+|-------------|-------------------|---------|------------------|
 | `name` | `Product Name` | `fldXLw08VVVF8Aquz` | ✅ Doğrudan |
 | `offers.price` | `Price TRY` | `fldEds5Vy1frHlw3e` | ✅ Doğrudan (sayısal) |
 | `offers.url` | `Buzsu URL` | `fldOZXnwqNzgddMxj` | ✅ Doğrudan |
@@ -143,7 +143,7 @@ Her ürün sayfasına eklenecek `Product` JSON-LD bloğu için zorunlu ve öneri
 **Airtable'a eklenmesi önerilen yeni alanlar:**
 
 | Alan Adı | Tip | Amaç |
-|---------|-----|-------|
+|---------|-----|------|
 | `Schema Description` | `multilineText` | Public `description` — Google'a gösterilecek |
 | `Image URL` | `url` | `image` property için CDN URL |
 | `SKU` | `singleLineText` | Envanter takibi + schema `sku` |
@@ -300,16 +300,16 @@ Her ürün sayfasına eklenecek `Product` JSON-LD bloğu için zorunlu ve öneri
 
 ---
 
-## 6. CodeIgniter 4 Entegrasyon Planı
+## 6. CodeIgniter 3.7.1 Entegrasyon Planı
 
 ### 6.1 Mimari Yaklaşım
 
-Buzsu.com.tr özel PHP CMS üzerinde çalışıyor (CodeIgniter 4). JSON-LD üretimi için iki yöntem önerilir:
+Buzsu.com.tr özel PHP CMS üzerinde çalışıyor (CodeIgniter 3.7.1). JSON-LD üretimi için iki yöntem önerilir:
 
 **Yöntem A — View Helper (Önerilen)**
 
 ```php
-// app/Helpers/schema_helper.php
+// application/helpers/schema_helper.php
 
 function product_schema(array $product): string
 {
@@ -380,7 +380,7 @@ Airtable Products (tbldogYQwAQr24UWE)
 `/su-aritma-cihazlari/` sayfasının mevcut `CollectionPage` bloğundaki `mainEntity.itemListElement` öğeleri `WebPage` → `Product` @type ile güncellenir:
 
 ```php
-// app/Helpers/schema_helper.php
+// application/helpers/schema_helper.php
 
 function collection_page_schema(array $products): string
 {
@@ -433,7 +433,7 @@ function collection_page_schema(array $products): string
 ## 7. Mevcut Schema ile Çakışma Kontrolü
 
 | Mevcut Schema | Çakışma Riski | Değerlendirme |
-|--------------|--------------|--------------|
+|--------------|--------------|---------------|
 | `Organization` (`<head>`) | ❌ Yok | Product schema bağımsız blok; Organization `@id` referansı kullanılacak |
 | `WebSite` (`<head>`) | ❌ Yok | İlgisiz — aynı sayfada birden fazla farklı @type schema tamam |
 | `BreadcrumbList` × 2 | ⚠️ Tekrar — risk değil ama gereksiz | Sayfa gövdesindeki kopya kaldırılmalı; sadece `<head>` yeterli |
@@ -447,7 +447,7 @@ function collection_page_schema(array $products): string
 ## 8. Risk Analizi
 
 | Risk | Olasılık | Etki | Azaltma |
-|------|---------|------|---------|
+|------|---------|------|----------|
 | `image` alanı eksik → Google Rich Results Test başarısız | **Yüksek** | Yüksek | Ürün CDN URL'leri önce `DOLDURULACAK` alanından toplanmalı; schema yalnızca image URL hazır olunca yayına alınmalı |
 | `description` çok kısa / dahili not → Google'da zayıf görünüm | **Yüksek** | Orta | Airtable'a `Schema Description` alanı ekle; her ürün için 50–150 kelime public açıklama yaz |
 | `sku` eksik → Merchant Center entegrasyonu çalışmaz | **Orta** | Orta (gelecek) | Airtable'a `SKU` alanı ekle; şimdilik `sku` alanını omit et |
