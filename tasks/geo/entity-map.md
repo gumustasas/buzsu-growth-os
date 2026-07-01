@@ -46,4 +46,5 @@ bu dosya yalnızca tabloyu tutar).
 
 - [ ] İlk GEO görevi çalıştırıldığında tabloya ilk satırlar eklenecek
 - [ ] `knowledge-graph/` 10 seed entity için mevcut sayfa eşleşmeleri geriye dönük taranacak
-- [ ] Sprint-6 (40 entity) sonrası tablo entity-seo skill ile çapraz doğrulanacak
+- [x] Sprint-6 tamamlandı — `knowledge-graph/` 10 seed'den 39 entity'ye genişletildi (29 yeni dosya: `brands/`, `products/`, `components/`, `contaminants/`, `problems/`, `technologies/`, `standards/`, `certifications/`). Bu tablo henüz güncellenmedi çünkü satır eklemek için gerçek Serper/GSC sorgu-sayfa verisi gerekir (bkz. madde 4, "Entity içeriği asla bu dosyaya kopyalanmaz").
+- [ ] Sprint-6 sonrası 29 yeni entity için gerçek sorgu/sayfa eşleştirmesi entity-seo skill ile yapılacak; Serper AI snippet taraması sonuçları geldiğinde bu tabloya satır olarak eklenecek

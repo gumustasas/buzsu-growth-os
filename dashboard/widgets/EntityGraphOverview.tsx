@@ -16,6 +16,8 @@ const DISPLAY: Array<{ type: EntityType; label: string; icon: string }> = [
   { type: 'Mineral', label: 'Mineral', icon: '💎' },
   { type: 'FAQ', label: 'SSS', icon: '❓' },
   { type: 'Location', label: 'Lokasyon', icon: '📍' },
+  { type: 'Thing', label: 'Sorun', icon: '⚠️' },
+  { type: 'DefinedTerm', label: 'Standart/Sertifika', icon: '📜' },
 ]
 
 export function EntityGraphOverview({ data }: EntityGraphOverviewProps) {

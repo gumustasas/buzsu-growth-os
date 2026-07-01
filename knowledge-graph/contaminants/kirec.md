@@ -3,7 +3,7 @@ entity_type: Contaminant
 schema_type: schema.org/Thing
 name_tr: Kireç
 name_en: Limescale / Calcium Carbonate Scale
-aliases: [Kireçlenme, Kalsiyum Karbonat, Su Kireçlenmesi, Sert Su]
+aliases: [Kireçlenme, Kalsiyum Karbonat, Su Kireçlenmesi]
 related_entities:
   - technologies/ters-osmoz.md
   - components/ters-osmoz-membran.md
