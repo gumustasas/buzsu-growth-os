@@ -26,7 +26,7 @@ PR incelemesi veya taslak kod değerlendirmesi için bu şablonu kullan.
 - [ ] SQL injection riski? (Query Builder kullanıldı mı?)
 - [ ] Kimlik bilgisi/token hardcode edilmiş mi?
 - [ ] Kullanıcı girdisi sanitize edildi mi?
-- [ ] CSRF koruması aktif mi? (CI4 form submit)
+- [ ] CSRF koruması aktif mi? (CI3.7.1 form submit)
 
 ### Performans
 

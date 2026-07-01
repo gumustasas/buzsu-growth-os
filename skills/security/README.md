@@ -6,7 +6,7 @@ Buzsu Growth OS reposu ve buzsu-site kod tabanı için savunma amaçlı güvenli
 
 ## İlgili Agent
 
-Yok — skills/php/ ve skills/codeigniter4/ ile birlikte çalışır. Ayrı bir 'security-agent' eklenmesi MINOR, sonraki adımlarda önerilecek.
+Yok — skills/php/ ve skills/codeigniter3/ ile birlikte çalışır. Ayrı bir 'security-agent' eklenmesi MINOR, sonraki adımlarda önerilecek.
 
 ## İncelenen Dış Kaynaklar
 

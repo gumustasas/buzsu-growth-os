@@ -12,6 +12,6 @@ Bu kapsamda yalnızca savunma amaçlı, salt-okunur denetim yapılır; otomatik 
 
 ## İlgili Dosyalar
 
-- İlgili agent tanımı: `Yok — skills/php/ ve skills/codeigniter4/ ile birlikte çalışır. Ayrı bir 'security-agent' eklenmesi MINOR, sonraki adımlarda önerilecek.`
+- İlgili agent tanımı: `Yok — skills/php/ ve skills/codeigniter3/ ile birlikte çalışır. Ayrı bir 'security-agent' eklenmesi MINOR, sonraki adımlarda önerilecek.`
 - Bu modülün kontrol listesi: `skills/security/checklist.md`
 - Örnek promptlar: `skills/security/prompts.md`

@@ -1,7 +1,7 @@
 # Kodlama Prensipleri — BUZSU Geliştirme Felsefesi
 
 Bu doküman `multica-ai/andrej-karpathy-skills` reposunun README'sinden gözlemlenen Karpathy
-ilkelerini BUZSU'nun CI4 + Next.js + PHP yığınına uyarlar. Lisans doğrulanamadı (LICENSE
+ilkelerini BUZSU'nun CI3.7.1 + Next.js + PHP yığınına uyarlar. Lisans doğrulanamadı (LICENSE
 dosyası bulunamadı) — kavramsal çerçeve uyarlandı, metin kopyalanmadı.
 
 ## Dört Temel Prensip
@@ -38,6 +38,6 @@ Her görevin "başarı" tanımı somut çıktıyla belirlenir:
 
 ## BUZSU'ya Özgü Notlar
 
-- CI4'te her controller metodunda SQL injection önleme: Query Builder.
+- CI3.7.1'de her controller metodunda SQL injection önleme: Query Builder.
 - Next.js'te API anahtarı client-side code'a sızmaz: `NEXT_PUBLIC_` prefix'siz değişkenler.
 - n8n'de production workflow asla doğrudan düzenlenmez.
