@@ -10,7 +10,7 @@
 - [ ] Yalnızca görev kapsamındaki dosyalar değiştirildi mi?
 - [ ] Davranış değişmeden kaldı mı? (Aynı girdi → aynı çıktı)
 - [ ] Yeni soyutlama eklendiyse 3+ kullanım yeri var mı?
-- [ ] CI4/Next.js konvansiyonu korundu mu?
+- [ ] CI3.7.1/Next.js konvansiyonu korundu mu?
 
 ## Güvenlik
 

@@ -2,7 +2,7 @@
 
 ## Amaç
 
-BUZSU'nun CodeIgniter 4 + Next.js + PHP yığınında kodlama kararlarını düzenleyen
+BUZSU'nun CodeIgniter 3.7.1 + Next.js + PHP yığınında kodlama kararlarını düzenleyen
 temel prensipler ve pratikler. Hata üretmeden önce varsayımları netleştirme,
 gereksiz karmaşıklıktan kaçınma ve cerrahi düzeyde küçük değişiklikler yapma.
 

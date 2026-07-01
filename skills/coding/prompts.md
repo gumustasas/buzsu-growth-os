@@ -4,9 +4,9 @@
    nerede olduğunu bul ve düzeltme için bir taslak hazırla."
 2. "Buzsu.com.tr'nin ürün listeleme sayfasına filtre eklemek istiyorum ama hangi
    sorguları değiştireceğimden emin değilim — başlamadan önce ne netleştirmem lazım?"
-3. "Bu PHP fonksiyonunu CodeIgniter 4 ile uyumlu hale getir, basitliği koru,
+3. "Bu PHP fonksiyonunu CI3.7.1 ile uyumlu hale getir, basitliği koru,
    gereksiz soyutlama ekleme."
-4. "Next.js 14 App Router'da bir API route yazmam gerekiyor. CI4 backend'e istek
+4. "Next.js 14 App Router'da bir API route yazmam gerekiyor. CI3.7.1 backend'e istek
    atacak. Nasıl yapmalıyım, hangi varsayımlarla başlayacağım?"
 
 ## Görev Dosyası Akışı

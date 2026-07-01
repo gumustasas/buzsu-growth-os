@@ -4,7 +4,7 @@
 
 - [ ] Görevin başarı kriteri net mi? Eğer değilse soru sor.
 - [ ] Hangi dosyalar/fonksiyonlar etkilenecek? Liste yap.
-- [ ] Mevcut kod stiliyle uyumlu mu? (CI4 konvansiyonu, Next.js app router kuralları)
+- [ ] Mevcut kod stiliyle uyumlu mu? (CI3.7.1 konvansiyonu, Next.js app router kuralları)
 - [ ] Yeni bağımlılık gerekiyor mu? → MAJOR, önce onay al.
 
 ## Kodlama Sırasında

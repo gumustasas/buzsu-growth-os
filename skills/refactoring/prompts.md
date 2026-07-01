@@ -1,6 +1,6 @@
 # Refactoring — Örnek Promptlar
 
-1. "Bu CI4 model metodunu sadeleştir; tekrar eden query bloğu var ama
+1. "Bu CI3.7.1 model metodunu sadeleştir; tekrar eden query bloğu var ama
    veritabanı şemasına dokunma."
 2. "Bu Next.js sayfasındaki fetch mantığını bir hook'a çıkar. Davranış
    değişmemeli, yeni bağımlılık ekleme."

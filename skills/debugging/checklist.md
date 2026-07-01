@@ -5,7 +5,7 @@
 - [ ] Hata mesajı tam olarak okundu mu?
 - [ ] Hangi adımla tetiklendiği tespit edildi mi?
 - [ ] Log/stack trace mevcut mu? Nereden alınacağı biliniyor mu?
-- [ ] CI4: `writable/logs/` kontrol edildi mi?
+- [ ] CI3.7.1: `application/logs/` kontrol edildi mi?
 - [ ] Next.js: browser console + server log birlikte incelendi mi?
 
 ## İzolasyon

@@ -3,7 +3,7 @@
 ## Görev Analizi
 
 - [ ] Görev tek mi yoksa çok adımlı mı?
-- [ ] Hangi sistemler etkileniyor? (CI4, Next.js, Airtable, n8n, Vercel)
+- [ ] Hangi sistemler etkileniyor? (CI3.7.1, Next.js, Airtable, n8n, Vercel)
 - [ ] Hangi agent/skill kapsamında? Birden fazlaysa AGENTS.md'ye göre yönlendir.
 
 ## Varsayımlar

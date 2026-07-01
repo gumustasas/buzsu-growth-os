@@ -2,7 +2,7 @@
 
 ## Amaç
 
-BUZSU'nun CI4 + Next.js yığınında hataları sistematik biçimde tespit etmek:
+BUZSU'nun CI3.7.1 + Next.js yığınında hataları sistematik biçimde tespit etmek:
 önce yeniden üret, sonra küçük, doğrulanabilir adımlarla çöz.
 
 ## İlgili Agent
