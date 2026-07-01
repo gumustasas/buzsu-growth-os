@@ -288,6 +288,20 @@
 
 ---
 
+## Kapsam Dışı Bırakılanlar (Bilinçli Karar)
+
+> İlk roadmap taslağından (`roadmap.md`, 2026-06-17, Growth OS migrasyonu öncesi) taşındı.
+
+| Özellik | Neden Hariç Tutuldu |
+|---------|---------------------|
+| E-posta drip kampanyaları | Türkiye pazarı WhatsApp'a daha iyi yanıt veriyor |
+| Chatbot otomasyonu | Bu hacimde manuel takip daha yüksek dönüşüm sağlıyor |
+| Ücretli reklam entegrasyonu | Önce organik; SEO kârlı hale gelince reklam eklenir |
+| Özel analitik platformu | Google Analytics + Airtable yeterli |
+| Mobil uygulama | WhatsApp Business bunu tamamen karşılıyor |
+
+---
+
 ## Notlar
 
 - **Ana odak Buzsu.com.tr'dir.** Suvesu.com destekleyici içerik otoritesi olarak Buzsu'ya trafik gönderir.
