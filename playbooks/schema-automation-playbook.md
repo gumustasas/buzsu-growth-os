@@ -30,7 +30,7 @@ sistematik olarak oluştur, doğrula ve güncel tut.
 - Zorunlu alan kontrolü
 
 ### 4. Entegrasyon Taslağı
-- CodeIgniter 4 view dosyalarına ekleme planı
+- CodeIgniter 3.7.1 application/views/ dosyalarına ekleme planı
 - /drafts/schema/ altında versiyonlanmış taslaklar
 
 ### 5. Onay ve Yayın
