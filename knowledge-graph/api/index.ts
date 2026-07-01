@@ -114,7 +114,7 @@ export const ENTITIES: Entity[] = [
       schema_type: 'schema.org/Thing',
       name_tr: 'Kireç',
       name_en: 'Limescale / Calcium Carbonate Scale',
-      aliases: ['Kireçlenme', 'Kalsiyum Karbonat', 'Sert Su'],
+      aliases: ['Kireçlenme', 'Kalsiyum Karbonat'],
       related_entities: ['technologies/ters-osmoz', 'components/ters-osmoz-membran', 'minerals/alkali-mineral', 'locations/bartin'],
       status: 'seed',
     },
