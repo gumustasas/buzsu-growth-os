@@ -56,7 +56,7 @@ Bu alanlar doldurulmadan Product JSON-LD PR'ı açılamaz.
 ## Sonraki Adım (TASK-005 önerisi)
 
 - Onaylanan SKU + Image URL + Schema Description alanlarının Airtable'a girilmesi
-- Product JSON-LD CodeIgniter 4 entegrasyon branch'inin açılması
+- CI3.7.1 application/views/ entegrasyon branch'i açılması
 - Kategori sayfasındaki duplicate BreadcrumbList kaldırma PR'ı
 
 ---
@@ -77,7 +77,7 @@ Bu alanlar doldurulmadan Product JSON-LD PR'ı açılamaz.
     "Image URL'leri ürün sayfalarından manuel alınmalı",
     "Schema Description'lar insan tarafından onaylanmalı",
     "Onaylı alanlar Airtable'a insan tarafından girilmeli",
-    "Giriş sonrası TASK-005: CodeIgniter 4 entegrasyon branch açılacak"
+    "CI3.7.1 entegrasyon branch açılacak"
   ]
 }
 ```

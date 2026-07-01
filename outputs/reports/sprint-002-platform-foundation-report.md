@@ -159,7 +159,7 @@ Her entity dosyası şunları içerir:
 ## 7. Açık Blockerlar
 
 | Blocker | Etki | Sorumlu |
-|---------|------|---------|
+|---------|------|--------|
 | Airtable: SKU + Image URL + Schema Description doldurulmadı | TASK-006 + Product Schema PR bekliyor | İnsan |
 | Dashboard: Canlı veri yok | Widget'lar mock data gösteriyor | Sprint-3 |
 | Serper connector aktif değil | GEO/SEO canlı veri yok | Sprint-3 |
@@ -172,7 +172,7 @@ Her entity dosyası şunları içerir:
 
 | Öncelik | Görev |
 |---------|-------|
-| P0 | Airtable blocker çözülürse: TASK-006 Product Schema CI4 entegrasyonu |
+| P0 | Airtable blocker çözülürse: TASK-006 Product Schema CI3.7.1 entegrasyonu |
 | P1 | Dashboard Airtable live connector (okuma — n8n veya edge route) |
 | P1 | Serper connector — haftalık SERP snapshot n8n otomasyonu |
 | P1 | Knowledge Graph genişletme: +30 entity (rakip markalar, sertifikalar, teknolojiler) |
