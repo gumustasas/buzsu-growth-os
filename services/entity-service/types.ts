@@ -7,24 +7,17 @@ import type { Entity, EntityFrontmatter, EntityRelation, EntityType } from '../.
 
 export type { Entity, EntityFrontmatter, EntityRelation, EntityType }
 
-/** knowledge-graph/ altındaki entity kategorisi klasör adı (örn. 'products', 'faq'). */
-export type EntityCategory =
-  | 'entities'
-  | 'brands'
-  | 'products'
-  | 'components'
-  | 'technologies'
-  | 'certifications'
-  | 'minerals'
-  | 'contaminants'
-  | 'faq'
-  | 'glossary'
-  | 'locations'
-
-export const ENTITY_CATEGORIES: EntityCategory[] = [
-  'entities', 'brands', 'products', 'components', 'technologies',
-  'certifications', 'minerals', 'contaminants', 'faq', 'glossary', 'locations',
-]
+/**
+ * knowledge-graph/ altındaki entity kategorisi klasör adı (örn. 'products', 'faq').
+ *
+ * Kasıtlı olarak `string` — sabit bir literal union DEĞİL. Önceki halinde kapalı
+ * bir enum'du ve knowledge-graph/'a yeni kategori (problems/, standards/)
+ * eklendiğinde EntityLoader bunları sessizce atlıyordu (bkz.
+ * reports/entity-service-review.md Bölüm 4, bulgu #1 — P0). Kategoriler artık
+ * `FilesystemEntityLoader` tarafından dizin taramasıyla dinamik keşfedilir;
+ * burada sabit bir liste tutmak aynı hatayı tekrar üretir.
+ */
+export type EntityCategory = string
 
 /** Kategori önekiyle tam kimlik (örn. 'products/code-su-aritma-cihazi'). Dosya uzantısı içermez. */
 export type EntityId = string

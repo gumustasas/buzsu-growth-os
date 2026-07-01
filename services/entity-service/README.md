@@ -93,9 +93,11 @@ service.getHealth()                                    // özet: toplam, durum, 
   kullandığı alt kümeyi (scalar, inline `[a, b]` dizisi, çok satırlı `- item` dizisi) çözer.
   Yeni bir YAML deseni (iç içe obje, çok satırlı string vb.) eklenirse parser genişletilmelidir.
 - Depo tek seferlik `reload()` ile yüklenir; dosya izleme (watch) yoktur.
-- `certifications/` ve `glossary/` kategorileri henüz `knowledge-graph/` altında oluşturulmadı
-  (bkz. ROADMAP.md Sprint-6+); `ENTITY_CATEGORIES` listesinde yer alır ama klasör yoksa
-  `EntityLoader.loadCategory()` sessizce boş sonuç döner (hata fırlatmaz).
+- **[P0 — düzeltildi]** Kategori keşfi artık dinamik: `FilesystemEntityLoader.discoverCategories()`
+  `knowledge-graph/` kök dizinini tarar (gizli klasörler ve `api/` hariç), sabit bir kategori
+  listesine bağımlı değildir. Önceki hardcoded `ENTITY_CATEGORIES` sabiti kaldırıldı — bu sabit,
+  Sprint-6'da eklenen `problems/`/`standards/` kategorilerini (39 entity'nin %15'i) sessizce
+  atlıyordu (bkz. `reports/entity-service-review.md` Bölüm 4, bulgu #1). Bkz. `EntityLoader.test.ts`.
 
 ## Sonraki Adımlar (Sprint 7.2+, insan onayı gerekir)
 

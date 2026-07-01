@@ -9,7 +9,6 @@
 
 import * as fs from 'fs'
 import * as path from 'path'
-import { ENTITY_CATEGORIES } from './types'
 import type { Entity, EntityCategory, EntityFrontmatter } from './types'
 
 export interface LoadError {
@@ -22,13 +21,24 @@ export interface LoadResult {
   errors: LoadError[]
 }
 
+/**
+ * knowledge-graph/ kök dizininde bulunan ama entity kategorisi OLMAYAN
+ * klasörler. `api/` — okuma/mock API kodu (index.ts, search.ts, relations.ts),
+ * entity verisi değil. Gizli klasörler ('.' ile başlayanlar, örn. .git) ve
+ * dizin olmayan girdiler (README.md, governance.md vb.) ayrıca ve otomatik
+ * olarak hariç tutulur — bkz. isEntityCategoryDir().
+ */
+const EXCLUDED_KG_DIRS = new Set(['api'])
+
 export interface EntityLoader {
-  /** knowledge-graph/ kök dizinini tarar, tüm kategori klasörlerini okur. */
+  /** knowledge-graph/ kök dizinini tarar, tüm kategori klasörlerini dinamik keşfeder ve okur. */
   loadAll(): LoadResult
   /** Tek bir kategori klasörünü okur (örn. 'products'). */
   loadCategory(category: EntityCategory): LoadResult
   /** Tek bir dosyayı okuyup Entity'e çevirir. */
   loadFile(filePath: string): Entity
+  /** knowledge-graph/ kök dizininde şu an var olan entity kategorilerini listeler. */
+  discoverCategories(): EntityCategory[]
 }
 
 export class FilesystemEntityLoader implements EntityLoader {
@@ -38,10 +48,19 @@ export class FilesystemEntityLoader implements EntityLoader {
     this.kgRoot = kgRoot ?? path.join(__dirname, '../../knowledge-graph')
   }
 
+  discoverCategories(): EntityCategory[] {
+    if (!fs.existsSync(this.kgRoot)) return []
+    return fs
+      .readdirSync(this.kgRoot, { withFileTypes: true })
+      .filter((entry) => isEntityCategoryDir(entry))
+      .map((entry) => entry.name)
+      .sort()
+  }
+
   loadAll(): LoadResult {
     const entities: Entity[] = []
     const errors: LoadError[] = []
-    for (const category of ENTITY_CATEGORIES) {
+    for (const category of this.discoverCategories()) {
       const result = this.loadCategory(category)
       entities.push(...result.entities)
       errors.push(...result.errors)
@@ -73,6 +92,15 @@ export class FilesystemEntityLoader implements EntityLoader {
     const id = toEntityId(this.kgRoot, filePath)
     return { id, filePath, frontmatter, body }
   }
+}
+
+/**
+ * Bir dizin girdisinin entity kategorisi klasörü sayılıp sayılmayacağını
+ * belirler: gerçek bir alt dizin olmalı, '.' ile başlamamalı (gizli klasör)
+ * ve EXCLUDED_KG_DIRS'te olmamalı (örn. 'api' — mock/okuma API'si).
+ */
+function isEntityCategoryDir(entry: fs.Dirent): boolean {
+  return entry.isDirectory() && !entry.name.startsWith('.') && !EXCLUDED_KG_DIRS.has(entry.name)
 }
 
 /** knowledge-graph/ köküne göre relatif, uzantısız kimlik üretir. */

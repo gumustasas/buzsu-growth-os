@@ -170,9 +170,12 @@ draft → insan onayı → PR akışına göre insan/agent tarafından yapılır
 - `parseFrontmatter()` genel amaçlı YAML parser değildir; yalnızca mevcut entity dosyalarının
   kullandığı alt kümeyi (scalar, inline `[a, b]`, çok satırlı `- item`) çözer.
 - Dosya izleme (watch) yok; değişiklik sonrası `reload()` manuel çağrılır.
-- `certifications/` ve `glossary/` kategorileri `ENTITY_CATEGORIES` listesinde tanımlı ama
-  klasörler henüz `knowledge-graph/` altında oluşturulmadı (ROADMAP.md Sprint-6+); loader bu
-  durumda hata fırlatmaz, sessizce boş sonuç döner.
+- **[P0 — düzeltildi, bkz. `reports/entity-service-review.md`]** Kategori listesi hardcoded'du
+  (`ENTITY_CATEGORIES`) ve Sprint-6'da eklenen `problems/`/`standards/` kategorilerini (6/39
+  entity, %15) sessizce atlıyordu. `FilesystemEntityLoader.discoverCategories()` artık
+  `knowledge-graph/` kök dizinini tarayarak kategorileri dinamik keşfeder; gizli klasörler ve
+  `api/` (mock/okuma API'si) hariç tutulur, olmayan bir kategori (örn. `glossary/`) hata
+  üretmeden sessizce yok sayılır. Regresyon testi: `EntityLoader.test.ts`.
 
 ---
 
