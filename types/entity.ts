@@ -13,6 +13,8 @@ export type EntityType =
   | 'FAQ'
   | 'Glossary'
   | 'Location'
+  | 'Thing'
+  | 'DefinedTerm'
 
 export interface EntityFrontmatter {
   entity_type: EntityType

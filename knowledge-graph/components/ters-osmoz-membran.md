@@ -44,4 +44,4 @@ Türkiye'nin birçok bölgesinde şebeke suyu sertliği yüksek olduğundan memb
 ## Suvesu / Buzsu İçerik Bağlantısı
 
 - **Suvesu:** "Ters osmoz membranı ne kadar sürer?" → featured snippet fırsatı
-- **Buzsu:** [Yıllık Filtre Seti](../products/naturalsnet-11-asama.md) içinde membran dahil mi? → doğrulanmalı
+- **Buzsu:** [Yıllık Filtre Seti](../products/yillik-filtre-seti.md) içinde membran dahil mi? → doğrulanmalı
