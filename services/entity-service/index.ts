@@ -55,6 +55,14 @@ export type {
   EntityExportIndexes,
   EntityExportStats,
 } from './EntityExporter'
+export { DefaultCI3Bridge, CI3_BUNDLE_VERSION, createCI3Bridge } from './CI3Bridge'
+export type {
+  CI3Bridge,
+  CI3Bundle,
+  CI3BootstrapConfig,
+  CI3SchemaMapping,
+  CI3LinkSuggestion,
+} from './CI3Bridge'
 
 export interface EntityService {
   /** Tam kimlik ile entity döner (örn. 'products/code-su-aritma-cihazi'). */

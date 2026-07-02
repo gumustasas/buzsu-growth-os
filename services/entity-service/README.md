@@ -134,7 +134,32 @@ n8n Code node doğrudan okur):
 - `search()` substring taraması hâlâ O(n)'dir (index haystack'leri önceden hesaplar ama tarama tam metin
   üzerinde çalışır). Exact ad/alias lookup için `EntityIndex.byAlias()` O(1)'dir.
 
-## Sonraki Adımlar (Sprint 7.4+, insan onayı gerekir)
+## Sprint-7.4: CI3 Integration
+
+`CI3Bridge` (`CI3Bridge.ts`) — EntityExporter çıktısını CI3/PHP tarafının
+tüketebileceği bir bundle paketine dönüştürür:
+
+- `entities.index.json` (mevcut export, değişmedi)
+- `ci3-schema-map.json` (entity → JSON-LD mapping)
+- `ci3-link-map.json` (anchor/url çiftleri — internal linking hook)
+- `ci3-entity-config.json` (bootstrap ayarları)
+
+PHP tarafı: `drafts/code/ci3-integration/` altında CI3 library/helper/controller
+taslakları. İnsan onayı sonrası buzsu.com.tr CI3 projesine uygulanır.
+
+| PHP Bileşen | Sorumluluk |
+|-------------|-----------|
+| `Entity_service` | Ana facade — lazy load, APCu/file cache, sorgular |
+| `Entity_cache` | APCu birincil + dosya fallback cache |
+| `Entity_schema` | Entity → JSON-LD schema adapter |
+| `Entity_linker` | Internal linking hook |
+| `Entity_controller` | Controller entegrasyon (Product/Category/Content/FAQ) |
+| `entity_helper` | View kısayolları |
+| `Entity_cli` | CLI: stats, verify, rebuild, export |
+
+> **Not:** CI3Bridge export'ları additive'dir — mevcut EntityService public API'si değişmedi.
+
+## Sonraki Adımlar (Sprint 7.5+, insan onayı gerekir)
 
 - `knowledge-graph/api/` (Sprint-2/3 mock katmanı) ile ilişki: dashboard'un hangi katmana bağlanacağı (MINOR).
 - `entity-indexer` n8n workflow'unun `EntityExporter` çıktısını üretecek şekilde uygulanması.
