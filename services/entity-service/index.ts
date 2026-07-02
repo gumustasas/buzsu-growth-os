@@ -21,6 +21,7 @@ import { DefaultEntityResolver } from './EntityResolver'
 import { GraphEntityRelations } from './EntityRelations'
 import { TextEntitySearch } from './EntitySearch'
 import { DefaultEntityValidator } from './EntityValidator'
+import { DefaultEntityExporter } from './EntityExporter'
 import type {
   Entity,
   EntityCategory,
@@ -29,12 +30,15 @@ import type {
   EntityType,
   ValidationResult,
 } from './types'
+import type { EntityExportDoc } from './EntityExporter'
 
 export * from './types'
 export { FilesystemEntityLoader } from './EntityLoader'
 export type { EntityLoader, LoadError, LoadResult } from './EntityLoader'
 export { InMemoryEntityRepository } from './EntityRepository'
 export type { EntityRepository } from './EntityRepository'
+export { EntityIndex, normalizeText, categoryOf, slugOf } from './EntityIndex'
+export type { SearchDoc } from './EntityIndex'
 export { DefaultEntityResolver } from './EntityResolver'
 export type { EntityResolver, ResolvedReferences } from './EntityResolver'
 export { GraphEntityRelations } from './EntityRelations'
@@ -43,6 +47,14 @@ export { TextEntitySearch } from './EntitySearch'
 export type { EntitySearch } from './EntitySearch'
 export { DefaultEntityValidator } from './EntityValidator'
 export type { EntityValidator } from './EntityValidator'
+export { DefaultEntityExporter, EXPORT_SCHEMA_VERSION } from './EntityExporter'
+export type {
+  EntityExporter,
+  EntityExportDoc,
+  EntityExportEntry,
+  EntityExportIndexes,
+  EntityExportStats,
+} from './EntityExporter'
 
 export interface EntityService {
   /** Tam kimlik ile entity döner (örn. 'products/code-su-aritma-cihazi'). */
@@ -53,14 +65,22 @@ export interface EntityService {
   getByType(type: EntityType): Entity[]
   /** Verilen kategori klasöründeki tüm kayıtlar. */
   getByCategory(category: EntityCategory): Entity[]
-  /** Bir entity'nin ilişkili olduğu, çözülebilen entity'ler. */
+  /** buzsu_url veya suvesu_url ile entity döner. */
+  getByUrl(url: string): Entity | undefined
+  /** Bir entity'nin ilişkili olduğu, çözülebilen entity'ler (outgoing). */
   getRelated(id: string): Entity[]
+  /** Bu entity'e işaret eden entity'ler (incoming / reverse dependency). */
+  getDependents(id: string): Entity[]
   /** Ad/alias/id üzerinde metin araması; tip/durum/kategori ile filtrelenebilir. */
   search(query: string, options?: EntitySearchOptions): Entity[]
   /** id verilirse tek entity'yi, verilmezse tüm depoyu doğrular. */
   validate(id?: string): ValidationResult | ValidationResult[]
   /** Depo özet sağlığı (toplam, duruma/tipe göre dağılım, kırık ilişki sayısı). */
   getHealth(): EntityServiceHealth
+  /** Knowledge Graph'ı düz JSON belge nesnesi olarak dışa aktarır (entities.index.json içeriği). */
+  export(): EntityExportDoc
+  /** export() çıktısını verilen dosyaya yazar, yazılan yolu döner. */
+  exportToFile(outPath: string): string
   /** Depoyu diskten yeniden yükler (dosya değişikliği sonrası). */
   reload(): void
 }
@@ -71,6 +91,7 @@ class DefaultEntityService implements EntityService {
   private readonly relations: GraphEntityRelations
   private readonly searchEngine: TextEntitySearch
   private readonly validator: DefaultEntityValidator
+  private readonly exporter: DefaultEntityExporter
 
   constructor(kgRoot?: string) {
     const loader = new FilesystemEntityLoader(kgRoot)
@@ -79,6 +100,7 @@ class DefaultEntityService implements EntityService {
     this.relations = new GraphEntityRelations(this.repository, this.resolver)
     this.searchEngine = new TextEntitySearch(this.repository)
     this.validator = new DefaultEntityValidator(this.repository, this.resolver)
+    this.exporter = new DefaultEntityExporter(this.repository, this.relations)
   }
 
   getEntity(id: string): Entity | undefined {
@@ -97,12 +119,28 @@ class DefaultEntityService implements EntityService {
     return this.repository.getByCategory(category)
   }
 
+  getByUrl(url: string): Entity | undefined {
+    return this.resolver.resolveByUrl(url)
+  }
+
   getRelated(id: string): Entity[] {
     return this.relations.getRelated(id)
   }
 
+  getDependents(id: string): Entity[] {
+    return this.relations.getDependents(id)
+  }
+
   search(query: string, options?: EntitySearchOptions): Entity[] {
     return this.searchEngine.search(query, options)
+  }
+
+  export(): EntityExportDoc {
+    return this.exporter.buildDoc()
+  }
+
+  exportToFile(outPath: string): string {
+    return this.exporter.writeToFile(outPath)
   }
 
   validate(id?: string): ValidationResult | ValidationResult[] {

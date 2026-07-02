@@ -30,13 +30,12 @@ export class DefaultEntityResolver implements EntityResolver {
   }
 
   resolveBySlug(slug: string): Entity | undefined {
-    return this.repository.getAll().find((e) => e.id.split('/').pop() === slug)
+    // Slug birden fazla kategoride çakışabilir; ilk (deterministik) eşleşme döner.
+    return this.repository.getIndex().bySlug(slug)[0]
   }
 
   resolveByUrl(url: string): Entity | undefined {
-    return this.repository
-      .getAll()
-      .find((e) => e.frontmatter.buzsu_url === url || e.frontmatter.suvesu_url === url)
+    return this.repository.getIndex().byUrl(url)
   }
 
   resolveReferences(ids: string[]): ResolvedReferences {
