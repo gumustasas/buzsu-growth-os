@@ -63,3 +63,19 @@
 - `knowledge-graph/api` index.ts ile aynı şema (statik gömülü → cache'e taşınır).
 - Sprint-6'da `lib` tarafı filesystem okuması (gray-matter) ile birleşir.
 - 150–200 entity hedefine ulaşıldığında index boyutu için sayfalama eklenir.
+
+## Sprint-7.3 — EntityExporter Bağlantısı
+
+Bu workflow'un ürettiği index'in **kanonik kaynağı** artık `services/entity-service/`
+içindeki `EntityExporter`'dır. Node 3 (frontmatter parse) ve Node 4 (byType sayımı +
+edge listesi) sıfırdan implemente edilmek yerine, bir build adımı
+`EntityService.exportToFile(...)` çağırıp `entities.index.json` üretir; workflow bu düz
+JSON'u okuyup cache'e yazar.
+
+**Üretilen format** (`services/entity-service/README.md` → "entities.index.json Formatı"):
+`meta`, `entities`, `indexes` (byId/bySlug/byCategory/byType/byAlias/byUrl), `edges`,
+`dependents` (ters bağımlılık), `stats`. Düz ve dilden bağımsız — CI3/PHP `json_decode`
+ve n8n Code node doğrudan okur.
+
+**Not:** `entities.index.json` türetilmiş artefakttır; repoya commit edilmez. Bu workflow
+(veya bir CI build adımı) çalışma zamanında üretir.

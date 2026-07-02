@@ -1,9 +1,14 @@
 // services/entity-service/EntitySearch.ts
-// Metin arama — ad (TR/EN), alias ve id üzerinde basit normalize edilmiş
+// Metin arama — ad (TR/EN), alias ve id üzerinde normalize edilmiş substring
 // eşleştirme. Tip/durum/kategori ile birleştirilebilir (bkz. EntitySearchOptions).
+//
+// Sprint-7.2: haystack'ler artık her sorguda yeniden kurulmaz; EntityIndex
+// bunları reload() başına bir kez hesaplar (searchDocs). Arama semantiği
+// (substring) korunur — public davranış değişmez.
 
 import type { Entity, EntitySearchOptions } from './types'
 import type { EntityRepository } from './EntityRepository'
+import { normalizeText } from './EntityIndex'
 
 export interface EntitySearch {
   search(query: string, options?: EntitySearchOptions): Entity[]
@@ -13,21 +18,17 @@ export class TextEntitySearch implements EntitySearch {
   constructor(private readonly repository: EntityRepository) {}
 
   search(query: string, options: EntitySearchOptions = {}): Entity[] {
-    const q = normalize(query)
-    let results = this.repository.getAll()
+    const index = this.repository.getIndex()
+    const q = normalizeText(query)
 
+    let results: Entity[]
     if (q) {
-      results = results.filter((e) => {
-        const haystack = [
-          e.id,
-          e.frontmatter.name_tr,
-          e.frontmatter.name_en ?? '',
-          ...(e.frontmatter.aliases ?? []),
-        ]
-          .map(normalize)
-          .join(' | ')
-        return haystack.includes(q)
-      })
+      results = index
+        .searchDocs()
+        .filter((doc) => doc.haystack.includes(q))
+        .map((doc) => doc.entity)
+    } else {
+      results = index.all()
     }
 
     if (options.type) results = results.filter((e) => e.frontmatter.entity_type === options.type)
@@ -37,17 +38,4 @@ export class TextEntitySearch implements EntitySearch {
 
     return results
   }
-}
-
-/** Türkçe karakterleri sadeleştirip küçük harfe çevirir (knowledge-graph/api/search.ts ile aynı mantık). */
-function normalize(s: string): string {
-  return s
-    .toLocaleLowerCase('tr-TR')
-    .replace(/ı/g, 'i')
-    .replace(/ş/g, 's')
-    .replace(/ğ/g, 'g')
-    .replace(/ü/g, 'u')
-    .replace(/ö/g, 'o')
-    .replace(/ç/g, 'c')
-    .trim()
 }

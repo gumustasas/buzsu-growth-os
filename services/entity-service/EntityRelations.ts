@@ -18,8 +18,10 @@ export interface ConnectedEntity {
 }
 
 export interface EntityRelations {
-  /** Bir entity'nin doğrudan ilişkili olduğu, çözülebilen entity'leri döner. */
+  /** Bir entity'nin doğrudan ilişkili olduğu, çözülebilen entity'leri döner (outgoing). */
   getRelated(id: string): Entity[]
+  /** Bu entity'e related_entities üzerinden işaret eden entity'ler (incoming / reverse dependency). */
+  getDependents(id: string): Entity[]
   /** Tüm grafiği kenar (edge) listesi olarak döner. */
   getAllEdges(): EntityRelation[]
   /** İki entity arasında doğrudan ilişki var mı? */
@@ -41,6 +43,11 @@ export class GraphEntityRelations implements EntityRelations {
     if (!entity) return []
     const { resolved } = this.resolver.resolveReferences(entity.frontmatter.related_entities ?? [])
     return resolved
+  }
+
+  getDependents(id: string): Entity[] {
+    // Ters bağımlılık index'ten O(1) — önceden hesaplanmış reverse edge listesi.
+    return this.repository.getIndex().getDependents(id)
   }
 
   getAllEdges(): EntityRelation[] {
