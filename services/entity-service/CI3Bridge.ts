@@ -4,14 +4,13 @@
 //   - entities.index.json (mevcut export, değişmedi)
 //   - ci3-schema-map.json (entity → JSON-LD mapping)
 //   - ci3-link-map.json (anchor/url çiftleri — internal linking hook)
-//   - ci3-config.php (bootstrap ayarları — PHP include-ready)
+//   - ci3-entity-config.json (bootstrap ayarları — JSON)
 //
 // Public API'ye ekleme yok — bu modül EntityService'in iç tüketicisidir;
 // dışarıya yalnızca CI3Bridge interface + buildBundle() factory export edilir.
 
 import * as fs from 'fs'
 import * as path from 'path'
-import type { Entity, EntityFrontmatter } from './types'
 import type { EntityExportDoc, EntityExportEntry } from './EntityExporter'
 import { EXPORT_SCHEMA_VERSION } from './EntityExporter'
 
